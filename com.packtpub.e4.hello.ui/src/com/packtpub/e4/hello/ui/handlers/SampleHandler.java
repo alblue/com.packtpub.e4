@@ -33,11 +33,12 @@ public class SampleHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(
+ 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		window = null; // bug introduced to catch NullPointerException
+ 		MessageDialog.openInformation(
 				window.getShell(),
 				"Hello",
-				"Hello, Eclipse world");
+				"Hello again, Eclipse world");
 		return null;
 	}
 }
