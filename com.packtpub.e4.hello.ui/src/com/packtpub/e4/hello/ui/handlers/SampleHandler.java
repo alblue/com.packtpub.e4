@@ -34,7 +34,6 @@ public class SampleHandler extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
  		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		window = null; // bug introduced to catch NullPointerException
  		MessageDialog.openInformation(
 				window.getShell(),
 				"Hello",

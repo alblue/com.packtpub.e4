@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<breakpoints>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/com.packtpub.e4.hello.ui/src/com/packtpub/e4/hello/ui/handlers/SampleHandler.java" type="1"/>
+<marker charStart="890" lineNumber="28" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:SampleHandler [line: 28] [conditional] - execute(ExecutionEvent)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.conditionEnabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=com.packtpub.e4.hello.ui/src&lt;com.packtpub.e4.hello.ui.handlers{SampleHandler.java[SampleHandler"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="890"/>
+<attrib name="charEnd" value="923"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="org.eclipse.jdt.debug.core.condition" value="Utility.breakpoint(((org.eclipse.swt.widgets.Event)event.trigger).stateMask != 0,&quot;Breakpoint %s %h&quot;,event,new java.util.Date().getTime())"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.packtpub.e4.hello.ui.handlers.SampleHandler"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+</breakpoints>
