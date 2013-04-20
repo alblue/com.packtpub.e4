@@ -10,16 +10,16 @@ ISBN-13: 978-1782160328
 Contents
 --------
 
-Chapter 1: Creating your first plug-in
-Chapter 2:
-Chapter 3:
-Chapter 4:
-Chapter 5:
-Chapter 6:
-Chapter 7:
-Chapter 8:
-Chapter 9:
-Chapter 10:
+Chapter 1: Creating your first Plug-in
+Chapter 2: Creating Views with SWT
+Chapter 3: Creating JFace Viewers
+Chapter 4: Interacting with the User
+Chapter 5: Storing Preferences and Settings
+Chapter 6: Working with Resources
+Chapter 7: Understanding the Eclipse 4 Model
+Chapter 8: Created Features, Update Sites, Applications and Products
+Chapter 9: Automated Testing of Plug-ins
+Chapter 10: Automated Builds with Tycho
 
 Contact
 -------
