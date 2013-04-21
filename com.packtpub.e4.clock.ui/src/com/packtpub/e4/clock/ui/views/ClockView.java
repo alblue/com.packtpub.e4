@@ -41,7 +41,12 @@ public class ClockView extends ViewPart {
 		new Thread("TickTock") {
 			public void run() {
 				while (!clock.isDisposed()) {
-					clock.redraw();
+					clock.getDisplay().asyncExec(new Runnable() {
+						public void run() {
+							if (clock != null && !clock.isDisposed())
+								clock.redraw();
+						}
+					});
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
