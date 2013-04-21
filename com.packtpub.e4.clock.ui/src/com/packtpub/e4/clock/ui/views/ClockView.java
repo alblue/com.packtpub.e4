@@ -38,6 +38,19 @@ public class ClockView extends ViewPart {
 				e.gc.fillArc(e.x, e.y, e.width - 1, e.height - 1, arc - 1, 2);
 			}
 		});
+		new Thread("TickTock") {
+			public void run() {
+				while (!clock.isDisposed()) {
+					clock.redraw();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						return;
+					}
+				}
+			}
+		}.start();
+
 	}
 
 	/**
