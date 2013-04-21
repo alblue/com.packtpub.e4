@@ -16,13 +16,17 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 
 public class ClockWidget extends Canvas {
+	private final Color color;
 
-	public ClockWidget(Composite parent, int style) {
+	public ClockWidget(Composite parent, int style, RGB rgb) {
 		super(parent, style);
+		// FIXME color is leaked!
+		this.color = new Color(parent.getDisplay(), rgb);
 		addPaintListener(new PaintListener() {
 			public void paintControl(PaintEvent e) {
 				ClockWidget.this.paintControl(e);
@@ -52,8 +56,8 @@ public class ClockWidget extends Canvas {
 		e.gc.drawArc(e.x, e.y, e.width - 1, e.height - 1, 0, 360);
 		int seconds = new Date().getSeconds();
 		int arc = (15 - seconds) * 6 % 360;
-		Color blue = e.display.getSystemColor(SWT.COLOR_BLUE);
-		e.gc.setBackground(blue);
+		// Color blue = e.display.getSystemColor(SWT.COLOR_BLUE);
+		e.gc.setBackground(color);
 		e.gc.fillArc(e.x, e.y, e.width - 1, e.height - 1, arc - 1, 2);
 	}
 
