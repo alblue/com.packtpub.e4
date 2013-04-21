@@ -12,6 +12,8 @@ package com.packtpub.e4.clock.ui;
 import java.util.Date;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Color;
@@ -25,8 +27,14 @@ public class ClockWidget extends Canvas {
 
 	public ClockWidget(Composite parent, int style, RGB rgb) {
 		super(parent, style);
-		// FIXME color is leaked!
 		this.color = new Color(parent.getDisplay(), rgb);
+		addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent e) {
+				if (color != null && !color.isDisposed())
+					color.dispose();
+			}
+		});
 		addPaintListener(new PaintListener() {
 			public void paintControl(PaintEvent e) {
 				ClockWidget.this.paintControl(e);
@@ -60,6 +68,20 @@ public class ClockWidget extends Canvas {
 		e.gc.setBackground(color);
 		e.gc.fillArc(e.x, e.y, e.width - 1, e.height - 1, arc - 1, 2);
 	}
+
+	/*
+	 * Note that adding this method does not have the effect intended; instead,
+	 * a DisposeListener needs to be added to allow the color to be disposed of
+	 * correctly.
+	 * 
+	 * @see org.eclipse.swt.widgets.Widget#dispose()
+	 */
+	// @Override
+	// public void dispose() {
+	// if (color != null && !color.isDisposed())
+	// color.dispose();
+	// super.dispose();
+	// }
 
 	public Point computeSize(int w, int h, boolean changed) {
 		int size;

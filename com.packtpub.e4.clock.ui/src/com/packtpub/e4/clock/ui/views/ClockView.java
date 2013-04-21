@@ -10,6 +10,7 @@
 package com.packtpub.e4.clock.ui.views;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
@@ -27,6 +28,12 @@ public class ClockView extends ViewPart {
 	 */
 	@SuppressWarnings("unused")
 	public void createPartControl(Composite parent) {
+		Object[] oo = parent.getDisplay().getDeviceData().objects;
+		int c = 0;
+		for (int i = 0; i < oo.length; i++)
+			if (oo[i] instanceof Color)
+				c++;
+		System.err.println("There are " + c + " Color instances");
 		RowLayout layout = new RowLayout(SWT.HORIZONTAL);
 		parent.setLayout(layout);
 		final ClockWidget clock1 = new ClockWidget(parent, SWT.NONE, new RGB(
