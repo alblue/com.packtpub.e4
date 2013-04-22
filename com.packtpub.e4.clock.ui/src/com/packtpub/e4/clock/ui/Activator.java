@@ -11,10 +11,13 @@ package com.packtpub.e4.clock.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.graphics.Region;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -72,11 +75,31 @@ public class Activator extends AbstractUIPlugin {
 				trayItem.addSelectionListener(new SelectionListener() {
 					public void widgetSelected(SelectionEvent e) {
 						if (shell == null) {
-							shell = new Shell(trayItem.getDisplay());
+							shell = new Shell(trayItem.getDisplay(), //
+									SWT.ON_TOP | SWT.NO_TRIM //
+							// SWT.APPLICATION_MODAL //
+							);
+							// shell = new
+							// Shell(trayItem.getDisplay(),SWT.ON_TOP |
+							// SWT.NO_TRIM);
+							// shell = new Shell(trayItem.getDisplay(),
+							// SWT.APPLICATION_MODAL);
+							shell.setAlpha(128);
+							// shell.setFullScreen(true);
+							// shell.setMaximized(true);
+							final Region region = new Region();
+							region.add(circle(25, 25, 25));
+							shell.setRegion(region);
 							shell.setLayout(new FillLayout());
 							new ClockWidget(shell, SWT.NONE, new RGB(255, 0,
 									255));
 							shell.pack();
+							shell.addDisposeListener(new DisposeListener() {
+								public void widgetDisposed(DisposeEvent e) {
+									if (region != null && !region.isDisposed())
+										region.dispose();
+								}
+							});
 						}
 						shell.open();
 					}
@@ -87,6 +110,20 @@ public class Activator extends AbstractUIPlugin {
 				});
 			}
 		});
+	}
+
+	private static int[] circle(int r, int offsetX, int offsetY) {
+		int[] polygon = new int[8 * r + 4];
+		// x^2 + y^2 = r^2
+		for (int i = 0; i < 2 * r + 1; i++) {
+			int x = i - r;
+			int y = (int) Math.sqrt(r * r - x * x);
+			polygon[2 * i] = offsetX + x;
+			polygon[2 * i + 1] = offsetY + y;
+			polygon[8 * r - 2 * i - 2] = offsetX + x;
+			polygon[8 * r - 2 * i - 1] = offsetY - y;
+		}
+		return polygon;
 	}
 
 	/*
