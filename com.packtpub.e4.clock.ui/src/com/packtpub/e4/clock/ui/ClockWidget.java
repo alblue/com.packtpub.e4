@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 
 public class ClockWidget extends Canvas {
 	private final Color color;
+	private int offset;
 
 	public ClockWidget(Composite parent, int style, RGB rgb) {
 		super(parent, style);
@@ -67,7 +68,10 @@ public class ClockWidget extends Canvas {
 		// Color blue = e.display.getSystemColor(SWT.COLOR_BLUE);
 		e.gc.setBackground(color);
 		e.gc.fillArc(e.x, e.y, e.width - 1, e.height - 1, arc - 1, 2);
-	}
+		e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		int hours = new Date().getHours() + offset;
+		arc = (3 - hours) * 30 % 360;
+		e.gc.fillArc(e.x, e.y, e.width-1, e.height-1, arc - 5, 10);	}
 
 	/*
 	 * Note that adding this method does not have the effect intended; instead,
@@ -95,5 +99,9 @@ public class ClockWidget extends Canvas {
 		if (size == SWT.DEFAULT)
 			size = 50;
 		return new Point(size, size);
+	}
+	
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 }

@@ -12,6 +12,8 @@ package com.packtpub.e4.clock.ui.views;
 import java.util.TimeZone;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.RowData;
@@ -55,6 +57,22 @@ public class ClockView extends ViewPart {
 		for (int i = 0; i < ids.length; i++) {
 			timezones.add(ids[i]);
 		}
+		timezones.addSelectionListener(new SelectionListener() {
+			  public void widgetSelected(SelectionEvent e) {
+			    String z = timezones.getText();
+			    TimeZone tz = z == null ? null : TimeZone.getTimeZone(z);
+			    TimeZone dt = TimeZone.getDefault();
+			    int offset = tz == null ? 0 : (
+			      tz.getOffset(System.currentTimeMillis()) - 
+			      dt.getOffset(System.currentTimeMillis())) / 3600000;
+			    clock3.setOffset(offset);
+			    clock3.redraw();
+			  }
+			  public void widgetDefaultSelected(SelectionEvent e) {
+			    clock3.setOffset(0);
+			    clock3.redraw();
+			  }
+			});
 	}
 
 	/**
