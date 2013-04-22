@@ -11,8 +11,13 @@ package com.packtpub.e4.clock.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tray;
 import org.eclipse.swt.widgets.TrayItem;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -25,6 +30,7 @@ public class Activator extends AbstractUIPlugin {
 
 	private TrayItem trayItem;
 	private Image image;
+	private Shell shell;
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "com.packtpub.e4.clock.ui"; //$NON-NLS-1$
@@ -63,6 +69,22 @@ public class Activator extends AbstractUIPlugin {
 							Activator.class
 									.getResourceAsStream("/icons/sample.gif")));
 				}
+				trayItem.addSelectionListener(new SelectionListener() {
+					public void widgetSelected(SelectionEvent e) {
+						if (shell == null) {
+							shell = new Shell(trayItem.getDisplay());
+							shell.setLayout(new FillLayout());
+							new ClockWidget(shell, SWT.NONE, new RGB(255, 0,
+									255));
+							shell.pack();
+						}
+						shell.open();
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+					}
+				});
 			}
 		});
 	}
@@ -90,6 +112,14 @@ public class Activator extends AbstractUIPlugin {
 				public void run() {
 					if (image != null && !image.isDisposed())
 						image.dispose();
+				}
+			});
+		}
+		if (shell != null && !shell.isDisposed()) {
+			Display.getDefault().asyncExec(new Runnable() {
+				public void run() {
+					if (shell != null && !shell.isDisposed())
+						shell.dispose();
 				}
 			});
 		}
