@@ -15,6 +15,14 @@
             class="com.packtpub.e4.clock.ui.views.ClockView"
             id="com.packtpub.e4.clock.ui.views.ClockView">
       </view>
+      <view
+            category="com.packtpub.e4.clock.ui"
+            class="com.packtpub.e4.clock.ui.views.TimeZoneView"
+            icon="icons/sample.gif"
+            id="com.packtpub.e4.clock.ui.views.TimeZoneView"
+            name="Time Zone View"
+            restorable="true">
+      </view>
    </extension>
 
 </plugin>
