@@ -19,8 +19,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.ClockWidget;
@@ -47,7 +49,10 @@ public class TimeZoneView extends ViewPart {
 			Iterator<TimeZone> timezoneIterator = region.getValue().iterator();
 			while (timezoneIterator.hasNext()) {
 				TimeZone tz = timezoneIterator.next();
-				ClockWidget clock = new ClockWidget(clocks, SWT.NONE, rgb);
+				Group group = new Group(clocks, SWT.SHADOW_ETCHED_IN);
+				group.setText(tz.getID().split("/")[1]);
+				group.setLayout(new FillLayout());
+				ClockWidget clock = new ClockWidget(group, SWT.NONE, rgb);
 				clock.setOffset((tz.getOffset(System.currentTimeMillis()) - td
 						.getOffset(System.currentTimeMillis())) / 3600000);
 			}
