@@ -13,6 +13,9 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * Provides a means to convert an object into text.
@@ -30,6 +33,14 @@ public class TimeZoneLabelProvider extends LabelProvider {
 			return ((TimeZone) element).getID().split("/")[1];
 		} else {
 			return "Unknown type: " + element.getClass();
+		}
+	}
+	public Image getImage(Object element) {
+		  if(element instanceof Map.Entry) {
+		    return PlatformUI.getWorkbench().getSharedImages()
+		      .getImage(ISharedImages.IMG_OBJ_FOLDER);
+		  } else {
+		    return super.getImage(element);
 		}
 	}
 }
