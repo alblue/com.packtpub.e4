@@ -19,12 +19,14 @@ import org.eclipse.jface.resource.LocalResourceManager;
 import org.eclipse.jface.resource.ResourceManager;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.internal.TimeZoneComparator;
 import com.packtpub.e4.clock.ui.internal.TimeZoneViewerComparator;
+import com.packtpub.e4.clock.ui.internal.TimeZoneViewerFilter;
 
 public class TimeZoneTreeView extends ViewPart {
 	private TreeViewer treeViewer;
@@ -42,7 +44,10 @@ public class TimeZoneTreeView extends ViewPart {
 				new TimeZoneLabelProvider(ir, fr)));
 		treeViewer.setContentProvider(new TimeZoneContentProvider());
 		treeViewer.setInput(new Object[] { TimeZoneComparator.getTimeZones() });
-		treeViewer.setData("REVERSE",Boolean.TRUE);
+		treeViewer.setData("REVERSE", Boolean.TRUE);
+		treeViewer.setFilters(new ViewerFilter[] { new TimeZoneViewerFilter(
+				"GMT") });
+		treeViewer.setExpandPreCheckFilters(true);
 		treeViewer.setComparator(new TimeZoneViewerComparator());
 	}
 
