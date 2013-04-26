@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.internal.TimeZoneComparator;
+import com.packtpub.e4.clock.ui.internal.TimeZoneViewerComparator;
 
 public class TimeZoneTreeView extends ViewPart {
 	private TreeViewer treeViewer;
@@ -41,6 +42,8 @@ public class TimeZoneTreeView extends ViewPart {
 				new TimeZoneLabelProvider(ir, fr)));
 		treeViewer.setContentProvider(new TimeZoneContentProvider());
 		treeViewer.setInput(new Object[] { TimeZoneComparator.getTimeZones() });
+		treeViewer.setData("REVERSE",Boolean.TRUE);
+		treeViewer.setComparator(new TimeZoneViewerComparator());
 	}
 
 	public void setFocus() {
