@@ -23,8 +23,14 @@ public class TimeZoneTableView extends ViewPart {
 	public void createPartControl(Composite parent) {
 		tableViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL);
 		tableViewer.getTable().setHeaderVisible(true);
+		String[] ids = TimeZone.getAvailableIDs();
+		TimeZone[] timeZones = new TimeZone[ids.length];
+		for (int i = 0; i < ids.length; i++) {
+			timeZones[i] = TimeZone.getTimeZone(ids[i]);
+		}
 		tableViewer.setContentProvider(ArrayContentProvider.getInstance());
-		tableViewer.setInput(TimeZone.getAvailableIDs());
+		tableViewer.setInput(timeZones);
+		getSite().setSelectionProvider(tableViewer);
 	}
 
 	public void setFocus() {
