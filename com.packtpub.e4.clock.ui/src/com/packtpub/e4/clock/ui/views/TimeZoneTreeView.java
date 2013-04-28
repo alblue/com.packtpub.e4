@@ -33,11 +33,13 @@ import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.internal.TimeZoneComparator;
 import com.packtpub.e4.clock.ui.internal.TimeZoneDialog;
+import com.packtpub.e4.clock.ui.internal.TimeZoneSelectionListener;
 import com.packtpub.e4.clock.ui.internal.TimeZoneViewerComparator;
 import com.packtpub.e4.clock.ui.internal.TimeZoneViewerFilter;
 
 public class TimeZoneTreeView extends ViewPart {
 	private TreeViewer treeViewer;
+	private TimeZoneSelectionListener selectionListener;
 
 	public void createPartControl(Composite parent) {
 		ResourceManager rm = JFaceResources.getResources();
@@ -76,10 +78,23 @@ public class TimeZoneTreeView extends ViewPart {
 			}
 		});
 		getSite().setSelectionProvider(treeViewer);
+		selectionListener = new TimeZoneSelectionListener(treeViewer, getSite()
+				.getPart());
+		getSite().getWorkbenchWindow().getSelectionService()
+				.addSelectionListener(selectionListener);
 	}
 
 	public void setFocus() {
 		treeViewer.getControl().setFocus();
 	}
 
+	@Override
+	public void dispose() {
+		if (selectionListener != null) {
+			getSite().getWorkbenchWindow()
+					.getSelectionService().removeSelectionListener(selectionListener);
+			selectionListener = null;
+		}
+		super.dispose();
+	}
 }
