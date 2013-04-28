@@ -75,6 +75,7 @@ public class TimeZoneTreeView extends ViewPart {
 				}
 			}
 		});
+		getSite().setSelectionProvider(treeViewer);
 	}
 
 	public void setFocus() {

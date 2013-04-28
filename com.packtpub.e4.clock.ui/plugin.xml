@@ -33,4 +33,11 @@
       </view>
    </extension>
 
+   <extension point="org.eclipse.core.runtime.adapters">
+      <factory adaptableType="java.util.TimeZone"
+            class="com.packtpub.e4.clock.ui.internal.TimeZoneAdapterFactory">
+         <adapter type="org.eclipse.ui.views.properties.IPropertySource"/>
+      </factory>
+   </extension>
+
 </plugin>
