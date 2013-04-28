@@ -11,21 +11,21 @@ package com.packtpub.e4.clock.ui.internal;
 
 import java.util.TimeZone;
 
-public class TimeZoneIDColumn extends TimeZoneColumn {
+public class TimeZoneDisplayNameColumn extends TimeZoneColumn {
 	public String getText(Object element) {
 		if (element instanceof TimeZone) {
-			return ((TimeZone) element).getID();
+			return ((TimeZone) element).getDisplayName();
 		} else {
 			return "";
 		}
 	}
 
 	public String getTitle() {
-		return "ID";
+		return "Display Name";
 	}
 
 	@Override
 	public int getWidth() {
-		return 150;
+		return 250;
 	}
 }

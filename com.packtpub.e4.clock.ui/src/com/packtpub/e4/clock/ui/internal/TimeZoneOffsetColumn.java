@@ -11,21 +11,22 @@ package com.packtpub.e4.clock.ui.internal;
 
 import java.util.TimeZone;
 
-public class TimeZoneIDColumn extends TimeZoneColumn {
+public class TimeZoneOffsetColumn extends TimeZoneColumn {
 	public String getText(Object element) {
 		if (element instanceof TimeZone) {
-			return ((TimeZone) element).getID();
+			return ((TimeZone) element).getOffset(System.currentTimeMillis())
+					/ 3600000 + "h";
 		} else {
 			return "";
 		}
 	}
 
 	public String getTitle() {
-		return "ID";
+		return "Offset";
 	}
 
 	@Override
 	public int getWidth() {
-		return 150;
+		return 50;
 	}
 }
