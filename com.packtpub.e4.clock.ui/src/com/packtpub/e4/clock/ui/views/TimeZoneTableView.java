@@ -11,10 +11,14 @@ package com.packtpub.e4.clock.ui.views;
 
 import java.util.TimeZone;
 
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.internal.TimeZoneDisplayNameColumn;
@@ -42,10 +46,22 @@ public class TimeZoneTableView extends ViewPart {
 		tableViewer.setContentProvider(ArrayContentProvider.getInstance());
 		tableViewer.setInput(timeZones);
 		getSite().setSelectionProvider(tableViewer);
-		selectionListener = new TimeZoneSelectionListener(
-				tableViewer, getSite().getPart());
+		selectionListener = new TimeZoneSelectionListener(tableViewer,
+				getSite().getPart());
 		getSite().getWorkbenchWindow().getSelectionService()
 				.addSelectionListener(selectionListener);
+		MenuManager manager = new MenuManager("#PopupMenu");
+		Menu menu = manager.createContextMenu(tableViewer.getControl());
+		tableViewer.getControl().setMenu(menu);
+		// Note that Actions are deprecated, and 
+		// commands should be used instead
+		Action deprecated = new Action() {
+			public void run() {
+				MessageDialog.openInformation(null, "Hello", "World");
+			}
+		};
+		deprecated.setText("Hello");
+		manager.add(deprecated);
 	}
 
 	public void setFocus() {
