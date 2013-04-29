@@ -63,14 +63,22 @@
             locationURI="menu:help?after=additions">
          <command commandId="com.packtpub.e4.clock.ui.command.hello"
             label="Hello"
-            style="push"/>
+            style="push">
+            <visibleWhen>
+               <with variable="activeContexts">
+                  <iterate operator="or">
+                     <equals value="org.eclipse.jdt.ui.javaEditorScope"/>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
    </extension>
 
    <extension point="org.eclipse.ui.bindings">
       <key commandId="com.packtpub.e4.clock.ui.command.hello"
             sequence="M1+9"
-            contextId="org.eclipse.ui.contexts.window"
+            contextId="org.eclipse.jdt.ui.javaEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
    </extension>
 
