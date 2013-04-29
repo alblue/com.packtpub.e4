@@ -48,5 +48,23 @@
       </factory>
    </extension>
 
+   <extension point="org.eclipse.ui.commands">
+      <command name="Hello"
+            description="Says Hello World" 
+            id="com.packtpub.e4.clock.ui.command.hello"/>
+   </extension>
+   <extension point="org.eclipse.ui.handlers">
+      <handler class="com.packtpub.e4.clock.ui.handlers.HelloHandler"
+            commandId="com.packtpub.e4.clock.ui.command.hello"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution allPopups="false"
+            locationURI="menu:help?after=additions">
+         <command commandId="com.packtpub.e4.clock.ui.command.hello"
+            label="Hello"
+            style="push"/>
+      </menuContribution>
+   </extension>
 
 </plugin>
