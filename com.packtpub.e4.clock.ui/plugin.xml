@@ -67,4 +67,11 @@
       </menuContribution>
    </extension>
 
+   <extension point="org.eclipse.ui.bindings">
+      <key commandId="com.packtpub.e4.clock.ui.command.hello"
+            sequence="M1+9"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
 </plugin>
