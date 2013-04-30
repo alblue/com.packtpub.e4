@@ -65,11 +65,7 @@
             label="Hello"
             style="push">
             <visibleWhen>
-               <with variable="activeContexts">
-                  <iterate operator="or">
-                     <equals value="org.eclipse.jdt.ui.javaEditorScope"/>
-                  </iterate>
-               </with>
+               <reference definitionId="when.hello.is.active"/>
             </visibleWhen>
          </command>
       </menuContribution>
@@ -80,6 +76,16 @@
             sequence="M1+9"
             contextId="org.eclipse.jdt.ui.javaEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition id="when.hello.is.active">
+         <with variable="activeContexts">
+            <iterate operator="or">
+               <equals value="org.eclipse.jdt.ui.javaEditorScope"/>
+            </iterate>
+         </with>
+      </definition>
    </extension>
 
 </plugin>
