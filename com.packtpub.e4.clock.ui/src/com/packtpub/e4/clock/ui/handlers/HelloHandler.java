@@ -10,7 +10,9 @@
 package com.packtpub.e4.clock.ui.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -19,7 +21,11 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.progress.IProgressConstants2;
 
 public class HelloHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) {
@@ -73,6 +79,18 @@ public class HelloHandler extends AbstractHandler {
 				}
 			}
 		};
+		ICommandService service = (ICommandService) PlatformUI.getWorkbench()
+				.getService(ICommandService.class);
+		Command command = service == null ? null : service
+				.getCommand("com.packtpub.e4.clock.ui.command.hello");
+		if (command != null) {
+			job.setProperty(IProgressConstants2.COMMAND_PROPERTY, command);
+			job.setProperty(IProgressConstants2.COMMAND_PROPERTY,
+					ParameterizedCommand.generateCommand(command, null));
+		}
+		job.setProperty(IProgressConstants2.ICON_PROPERTY, ImageDescriptor
+				.createFromURL(HelloHandler.class
+						.getResource("/icons/sample.gif")));
 		job.schedule();
 		return null;
 	}
