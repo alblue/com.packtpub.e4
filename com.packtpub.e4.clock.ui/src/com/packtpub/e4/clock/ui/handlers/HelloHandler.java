@@ -13,7 +13,9 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -24,19 +26,22 @@ public class HelloHandler extends AbstractHandler {
 		Job job = new Job("About to say hello") {
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
-					monitor.beginTask("Preparing", 5000);
-					for (int i = 0; i < 50 && !monitor.isCanceled(); i++) {
+					SubMonitor subMonitor = SubMonitor.convert(monitor,
+							"Preparing", 5000);
+
+					subMonitor.beginTask("Preparing", 5000);
+					for (int i = 0; i < 50 && !subMonitor.isCanceled(); i++) {
 						if (i == 10) {
-							monitor.subTask("Doing something");
+							subMonitor.subTask("Doing something");
 						} else if (i == 12) {
-							checkDozen(new SubProgressMonitor(monitor, 100));
+							checkDozen(new SubProgressMonitor(subMonitor, 100));
 						} else if (i == 25) {
-							monitor.subTask("Doing something else");
+							subMonitor.subTask("Doing something else");
 						} else if (i == 40) {
-							monitor.subTask("Nearly there");
+							subMonitor.subTask("Nearly there");
 						}
 						Thread.sleep(100);
-						monitor.worked(100);
+						subMonitor.worked(100);
 					}
 				} catch (InterruptedException e) {
 				} finally {
@@ -55,6 +60,8 @@ public class HelloHandler extends AbstractHandler {
 
 			private void checkDozen(IProgressMonitor monitor) {
 				try {
+					if (monitor == null)
+						monitor = new NullProgressMonitor();
 					monitor.beginTask("Checking a dozen", 12);
 					for (int i = 0; i < 12; i++) {
 						Thread.sleep(10);
