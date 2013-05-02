@@ -26,6 +26,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.progress.IProgressConstants2;
+import org.eclipse.ui.statushandlers.StatusManager;
+
+import com.packtpub.e4.clock.ui.Activator;
 
 public class HelloHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) {
@@ -34,7 +37,8 @@ public class HelloHandler extends AbstractHandler {
 				try {
 					SubMonitor subMonitor = SubMonitor.convert(monitor,
 							"Preparing", 5000);
-
+					// how to trigger the null pointer exception 'bug'
+					// subMonitor = null; // the bug
 					subMonitor.beginTask("Preparing", 5000);
 					for (int i = 0; i < 50 && !subMonitor.isCanceled(); i++) {
 						if (i == 10) {
@@ -50,6 +54,17 @@ public class HelloHandler extends AbstractHandler {
 						subMonitor.worked(100);
 					}
 				} catch (InterruptedException e) {
+				} catch (NullPointerException e) {
+					// Returning a Status lets Eclipse report the error
+					// return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+					// "Programming bug?", e);
+					// Alternatively the error can be reported/shown manually
+					StatusManager statusManager = StatusManager.getManager();
+					Status status = new Status(IStatus.ERROR,
+							Activator.PLUGIN_ID, "Programming bug?", e);
+					statusManager.handle(status, StatusManager.LOG
+							| StatusManager.SHOW);
+
 				} finally {
 					monitor.done();
 				}
