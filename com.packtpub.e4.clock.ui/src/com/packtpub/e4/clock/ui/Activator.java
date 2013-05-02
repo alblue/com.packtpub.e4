@@ -9,6 +9,8 @@
  */
 package com.packtpub.e4.clock.ui;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
@@ -58,8 +60,11 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		int launchCount = getPreferenceStore().getInt("launchCount");
-		System.out.println("I have been launched " + launchCount + " times");
-		getPreferenceStore().setValue("launchCount", launchCount + 1);
+		IEclipsePreferences eclipsePreferences = InstanceScope.INSTANCE
+				.getNode(PLUGIN_ID);
+		int launchCount2 = eclipsePreferences.getInt("launchCount", -1);
+		System.out.println("I have been launched " + launchCount + " times "
+				+ " and " + launchCount2);
 		final Display display = Display.getDefault();
 		display.asyncExec(new Runnable() {
 			public void run() {
