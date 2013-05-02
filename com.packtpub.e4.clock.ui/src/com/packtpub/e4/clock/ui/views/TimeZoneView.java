@@ -15,6 +15,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TimeZone;
 
+import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
@@ -32,6 +33,7 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
+import com.packtpub.e4.clock.ui.Activator;
 import com.packtpub.e4.clock.ui.ClockWidget;
 import com.packtpub.e4.clock.ui.internal.TimeZoneComparator;
 
@@ -79,10 +81,14 @@ public class TimeZoneView extends ViewPart {
 			scrolled.setExpandHorizontal(true);
 			scrolled.setExpandVertical(true);
 		}
+		final IDialogSettings settings = Activator.getDefault()
+				.getDialogSettings();
+		lastTabSelected = settings.get("lastTabSelected");
 		tabs.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item instanceof CTabItem) {
 					lastTabSelected = ((CTabItem) e.item).getText();
+					settings.put("lastTabSelected", lastTabSelected);
 				}
 			}
 		});
