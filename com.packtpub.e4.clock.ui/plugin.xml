@@ -112,4 +112,11 @@
          </command>
       </menuContribution>
    </extension>
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <page name="Clock"
+        class="com.packtpub.e4.clock.ui.ClockPreferencePage"
+        id="com.packtpub.e4.clock.ui.preference.page"/>
+   </extension>
+
 </plugin>
