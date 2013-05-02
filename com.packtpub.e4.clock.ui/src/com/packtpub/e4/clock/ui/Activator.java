@@ -57,6 +57,9 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		int launchCount = getPreferenceStore().getInt("launchCount");
+		System.out.println("I have been launched " + launchCount + " times");
+		getPreferenceStore().setValue("launchCount", launchCount + 1);
 		final Display display = Display.getDefault();
 		display.asyncExec(new Runnable() {
 			public void run() {
