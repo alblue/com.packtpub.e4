@@ -19,18 +19,31 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.ui.IMemento;
+import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.ClockWidget;
 import com.packtpub.e4.clock.ui.internal.TimeZoneComparator;
 
 public class TimeZoneView extends ViewPart {
+	private transient String lastTabSelected;
+
+	public void init(IViewSite site, IMemento memento) throws PartInitException {
+		super.init(site, memento);
+		if (memento != null) {
+			lastTabSelected = memento.getString("lastTabSelected");
+		}
+	}
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -66,7 +79,29 @@ public class TimeZoneView extends ViewPart {
 			scrolled.setExpandHorizontal(true);
 			scrolled.setExpandVertical(true);
 		}
-		tabs.setSelection(0);
+		tabs.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item instanceof CTabItem) {
+					lastTabSelected = ((CTabItem) e.item).getText();
+				}
+			}
+		});
+		if (lastTabSelected == null) {
+			tabs.setSelection(0);
+		} else {
+			CTabItem[] items = tabs.getItems();
+			for (CTabItem item : items) {
+				if (lastTabSelected.equals(item.getText())) {
+					tabs.setSelection(item);
+					break;
+				}
+			}
+		}
+	}
+
+	public void saveState(IMemento memento) {
+		super.saveState(memento);
+		memento.putString("lastTabSelected", lastTabSelected);
 	}
 
 	@Override
