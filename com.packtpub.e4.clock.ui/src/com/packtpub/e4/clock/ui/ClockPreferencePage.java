@@ -12,9 +12,16 @@ package com.packtpub.e4.clock.ui;
 import java.util.Arrays;
 import java.util.TimeZone;
 
+import org.eclipse.jface.preference.BooleanFieldEditor;
+import org.eclipse.jface.preference.ColorFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
+import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.IntegerFieldEditor;
+import org.eclipse.jface.preference.PathEditor;
+import org.eclipse.jface.preference.RadioGroupFieldEditor;
+import org.eclipse.jface.preference.ScaleFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -40,6 +47,20 @@ public class ClockPreferencePage extends FieldEditorPreferencePage implements
 		}
 		addField(new ComboFieldEditor("favourite", "Favourite time zone", data,
 				getFieldEditorParent()));
+		addField(new BooleanFieldEditor("tick", "Boolean value",
+				getFieldEditorParent()));
+		addField(new ColorFieldEditor("colour", "Favourite colour",
+				getFieldEditorParent()));
+		addField(new ScaleFieldEditor("scale", "Scale", getFieldEditorParent(),
+				0, 360, 10, 90));
+		addField(new FileFieldEditor("file", "Pick a file",
+				getFieldEditorParent()));
+		addField(new DirectoryFieldEditor("dir", "Pick a directory",
+				getFieldEditorParent()));
+		addField(new PathEditor("path", "Path", "Directory",
+				getFieldEditorParent()));
+		addField(new RadioGroupFieldEditor("group", "Radio choices", 3, data,
+				getFieldEditorParent(), true));
 	}
 
 	public void init(IWorkbench workbench) {
