@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Minimark
+Bundle-SymbolicName: com.packtpub.e4.minimark.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.packtpub.e4.minimark.ui.Activator
+Bundle-Vendor: PACKTPUB
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text;bundle-version="3.8.2",
+ org.eclipse.ui.workbench.texteditor;bundle-version="3.8.0",
+ org.eclipse.ui.editors;bundle-version="3.8.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
