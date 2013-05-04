@@ -22,4 +22,24 @@
          <run class="com.packtpub.e4.minimark.ui.MinimarkBuilder"/>
       </builder>
    </extension>
+   
+   <extension id="MinimarkNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.packtpub.e4.minimark.ui.MinimarkNature"/>
+      </runtime>
+   </extension>
+
+	<extension point="org.eclipse.ui.commands">
+	   <command name="Add Minimark Nature"
+	      defaultHandler="com.packtpub.e4.minimark.ui.AddMinimarkHandler"
+	      id="com.packtpub.e4.minimark.ui.AddMinimarkNature"/>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+	   <menuContribution allPopups="false" locationURI=
+	      "popup:org.eclipse.ui.projectConfigure?after=additions">
+	       <command label="Add Minimark Nature" style="push"
+	          commandId="com.packtpub.e4.minimark.ui.AddMinimarkNature"/>
+	   </menuContribution>
+	</extension>
 </plugin>
