@@ -10,8 +10,6 @@
 package com.packtpub.e4.minimark.ui;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
@@ -37,7 +35,7 @@ public class MinimarkTranslator {
 		writer.flush();
 	}
 
-	public static void main(String[] args) throws IOException {
-		convert(new FileReader("in.txt"), new FileWriter("out.txt"));
-	}
+	// public static void main(String[] args) throws IOException {
+	// convert(new FileReader("in.txt"), new FileWriter("out.txt"));
+	// }
 }
