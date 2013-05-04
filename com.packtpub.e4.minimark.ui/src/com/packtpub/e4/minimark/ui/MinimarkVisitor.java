@@ -32,7 +32,11 @@ public class MinimarkVisitor implements IResourceProxyVisitor,
 
 	@Override
 	public boolean visit(IResourceDelta delta) throws CoreException {
-		return false;
+		IResource resource = delta.getResource();
+		if (resource.getName().endsWith(".minimark")) {
+			processResource(resource);
+		}
+		return true;
 	}
 
 	@Override
@@ -62,7 +66,7 @@ public class MinimarkVisitor implements IResourceProxyVisitor,
 				} else {
 					htmlFile.create(contents, true, null);
 				}
-				htmlFile.setDerived(true,null);
+				htmlFile.setDerived(true, null);
 			} catch (IOException e) {
 				throw new CoreException(new Status(Status.ERROR,
 						Activator.PLUGIN_ID, "Failed to generate resource", e));
