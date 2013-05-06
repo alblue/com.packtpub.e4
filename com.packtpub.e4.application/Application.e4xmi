@@ -16,6 +16,7 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_CIYqALs0EeK44cRB8htn1g" label="Open" iconURI="platform:/plugin/com.packtpub.e4.application/icons/sample.gif" command="_CIYC_rs0EeK44cRB8htn1g"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_CIYqAbs0EeK44cRB8htn1g" label="Save" iconURI="platform:/plugin/com.packtpub.e4.application/icons/save_edit.gif" command="_CIYDAbs0EeK44cRB8htn1g"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_CIYqArs0EeK44cRB8htn1g" label="Quit" command="_CIYC-rs0EeK44cRB8htn1g"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_22JbkLtFEeK44cRB8htn1g" elementId="com.packtpub.e4.application.handledmenuitem.hello" label="Hello" tooltip="Says Hello World" command="_AZM7oLtFEeK44cRB8htn1g"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_CIYqA7s0EeK44cRB8htn1g" label="Help">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_CIYqBLs0EeK44cRB8htn1g" label="About" command="_CIYDBLs0EeK44cRB8htn1g"/>
@@ -59,6 +60,7 @@
   <handlers xmi:id="_CIYC_7s0EeK44cRB8htn1g" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.handlers.OpenHandler" command="_CIYC_rs0EeK44cRB8htn1g"/>
   <handlers xmi:id="_CIYDArs0EeK44cRB8htn1g" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.handlers.SaveHandler" command="_CIYDAbs0EeK44cRB8htn1g"/>
   <handlers xmi:id="_CIYDBbs0EeK44cRB8htn1g" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.handlers.AboutHandler" command="_CIYDBLs0EeK44cRB8htn1g"/>
+  <handlers xmi:id="_R5fikLtFEeK44cRB8htn1g" elementId="com.packtpub.e4.application.handler.hello" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.handlers.HelloHandler" command="_AZM7oLtFEeK44cRB8htn1g"/>
   <bindingTables xmi:id="_CIYC_Ls0EeK44cRB8htn1g" bindingContext="_CIYC97s0EeK44cRB8htn1g">
     <bindings xmi:id="_CIYC_bs0EeK44cRB8htn1g" keySequence="M1+Q" command="_CIYC-rs0EeK44cRB8htn1g"/>
     <bindings xmi:id="_CIYDALs0EeK44cRB8htn1g" keySequence="M1+O" command="_CIYC_rs0EeK44cRB8htn1g"/>
@@ -73,6 +75,7 @@
   <commands xmi:id="_CIYC_rs0EeK44cRB8htn1g" elementId="com.packtpub.e4.application.open" commandName="openCommand"/>
   <commands xmi:id="_CIYDAbs0EeK44cRB8htn1g" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
   <commands xmi:id="_CIYDBLs0EeK44cRB8htn1g" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <commands xmi:id="_AZM7oLtFEeK44cRB8htn1g" elementId="com.packtpub.e4.application.command.hello" commandName="helloCommand" description="Says Hello"/>
   <addons xmi:id="_CIYC8bs0EeK44cRB8htn1g" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_CIYC8rs0EeK44cRB8htn1g" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_CIYC87s0EeK44cRB8htn1g" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
