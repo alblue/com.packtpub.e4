@@ -1,0 +1,21 @@
+Shell {
+	/* background-color: blue; */
+	/* background-color: #00FF00; */
+	/* background-color: yellow blue; */
+	/* background-color: yellow blue 25%; */
+	/* background-color: red orange yellow green blue indigo violet 
+	                    15%    30%    45%   60%  75%    90%; */
+}
+
+/* Use this rule to target just one part with a specific ID */
+/*
+#com-packtpub-e4-application-part-0 {
+	background-color: red orange yellow green blue indigo violet 
+	                    15%    30%    45%   60%  75%    90%;
+} */
+
+/* Use this rule to target all parts */
+.MPart {
+	background-color: red orange yellow green blue indigo violet 
+	                    15%    30%    45%   60%  75%    90%;
+}
