@@ -25,6 +25,7 @@ import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.e4.ui.workbench.swt.modeling.EMenuService;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -56,7 +57,8 @@ public class Hello {
 	private UISynchronize ui;
 
 	@PostConstruct
-	public void create(Composite parent) {
+	public void create(Composite parent, EMenuService menu) {
+		menu.registerContextMenu(parent, "com.packtpub.e4.application.popupmenu.hello");
 		button = new Button(parent, SWT.PUSH);
 		button.setText("Do not push");
 		button.addSelectionListener(new SelectionListener() {
