@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_CIXb4Ls0EeK44cRB8htn1g" elementId="org.eclipse.e4.ide.application" bindingContexts="_CIYC97s0EeK44cRB8htn1g">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_CIYC8Ls0EeK44cRB8htn1g" label="com.packtpub.e4.application" width="500" height="400">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_CIYC8Ls0EeK44cRB8htn1g" label="Hello E4" width="500" height="400">
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_CIYqBbs0EeK44cRB8htn1g">
       <children xsi:type="advanced:Perspective" xmi:id="_CIYqBrs0EeK44cRB8htn1g">
         <children xsi:type="basic:PartSashContainer" xmi:id="_CIYqB7s0EeK44cRB8htn1g">
@@ -24,6 +24,33 @@
       <children xsi:type="menu:ToolBar" xmi:id="_CIYqC7s0EeK44cRB8htn1g" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_CIYqDLs0EeK44cRB8htn1g" iconURI="platform:/plugin/com.packtpub.e4.application/icons/sample.gif" command="_CIYC_rs0EeK44cRB8htn1g"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_CIYqDbs0EeK44cRB8htn1g" iconURI="platform:/plugin/com.packtpub.e4.application/icons/save_edit.gif" command="_CIYDAbs0EeK44cRB8htn1g"/>
+      </children>
+    </trimBars>
+  </children>
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_hqI8YLs7EeK44cRB8htn1g" visible="false" label="Other E4" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_hqI8Ybs7EeK44cRB8htn1g">
+      <children xsi:type="advanced:Perspective" xmi:id="_hqI8Yrs7EeK44cRB8htn1g">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_hqI8Y7s7EeK44cRB8htn1g">
+          <children xsi:type="basic:PartStack" xmi:id="_hqI8ZLs7EeK44cRB8htn1g">
+            <children xsi:type="basic:Part" xmi:id="_hqI8Zbs7EeK44cRB8htn1g" elementId="com.packtpub.e4.application.part.0" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.Hello" label="Hello"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_hqI8Zrs7EeK44cRB8htn1g" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_hqI8Z7s7EeK44cRB8htn1g" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_hqI8aLs7EeK44cRB8htn1g" label="Open" iconURI="platform:/plugin/com.packtpub.e4.application/icons/sample.gif" command="_CIYC_rs0EeK44cRB8htn1g"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_hqI8abs7EeK44cRB8htn1g" label="Save" iconURI="platform:/plugin/com.packtpub.e4.application/icons/save_edit.gif" command="_CIYDAbs0EeK44cRB8htn1g"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_hqI8ars7EeK44cRB8htn1g" label="Quit" command="_CIYC-rs0EeK44cRB8htn1g"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_hqI8a7s7EeK44cRB8htn1g" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_hqI8bLs7EeK44cRB8htn1g" label="About" command="_CIYDBLs0EeK44cRB8htn1g"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_hqI8bbs7EeK44cRB8htn1g">
+      <children xsi:type="menu:ToolBar" xmi:id="_hqI8brs7EeK44cRB8htn1g" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_hqI8b7s7EeK44cRB8htn1g" iconURI="platform:/plugin/com.packtpub.e4.application/icons/sample.gif" command="_CIYC_rs0EeK44cRB8htn1g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_hqI8cLs7EeK44cRB8htn1g" iconURI="platform:/plugin/com.packtpub.e4.application/icons/save_edit.gif" command="_CIYDAbs0EeK44cRB8htn1g"/>
       </children>
     </trimBars>
   </children>
