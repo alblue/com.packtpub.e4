@@ -31,11 +31,14 @@ public class Hello {
 	@Optional
 	@Inject
 	private LogService log;
+	@Inject
+	@Named("math.random")
+	private Object random;
 
 	@PostConstruct
 	public void create(Composite parent) {
 		label = new Label(parent, SWT.NONE);
-		label.setText(window.getLabel());
+		label.setText(window.getLabel() + " " + random);
 		if (log != null) {
 			log.log(LogService.LOG_ERROR, "Hello");
 		}
