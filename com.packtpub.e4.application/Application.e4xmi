@@ -19,6 +19,7 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_22JbkLtFEeK44cRB8htn1g" elementId="com.packtpub.e4.application.handledmenuitem.hello" label="Hello" tooltip="Says Hello World" command="_AZM7oLtFEeK44cRB8htn1g">
           <parameters xmi:id="_MQMs4LtHEeK44cRB8htn1g" elementId="com.packtpub.e4.application.parameter.hello.value" name="com.packtpub.e4.application.commandparameter.hello.value" value="Hello World Parameter"/>
         </children>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_dGhUULtIEeK44cRB8htn1g" elementId="com.packtpub.e4.application.directmenuitem.hello" label="Direct Hello" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.handlers.HelloHandler"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_CIYqA7s0EeK44cRB8htn1g" label="Help">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_CIYqBLs0EeK44cRB8htn1g" label="About" command="_CIYDBLs0EeK44cRB8htn1g"/>
@@ -68,6 +69,7 @@
     <bindings xmi:id="_CIYDALs0EeK44cRB8htn1g" keySequence="M1+O" command="_CIYC_rs0EeK44cRB8htn1g"/>
     <bindings xmi:id="_CIYDA7s0EeK44cRB8htn1g" keySequence="M1+S" command="_CIYDAbs0EeK44cRB8htn1g"/>
     <bindings xmi:id="_CIYDBrs0EeK44cRB8htn1g" keySequence="M1+A" command="_CIYDBLs0EeK44cRB8htn1g"/>
+    <bindings xmi:id="_a6dP8LtJEeK44cRB8htn1g" elementId="" keySequence="M1+L" command="_AZM7oLtFEeK44cRB8htn1g"/>
   </bindingTables>
   <rootContext xmi:id="_CIYC97s0EeK44cRB8htn1g" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_CIYC-Ls0EeK44cRB8htn1g" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
