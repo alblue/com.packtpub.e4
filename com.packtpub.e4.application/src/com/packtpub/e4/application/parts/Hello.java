@@ -10,20 +10,30 @@
 package com.packtpub.e4.application.parts;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.osgi.service.log.LogService;
 
 @SuppressWarnings("restriction")
 public class Hello {
 	private Label label;
 
+	@Optional
+	@Inject
+	private LogService log;
+
 	@PostConstruct
 	public void create(Composite parent) {
 		label = new Label(parent, SWT.NONE);
 		label.setText("Hello");
+		if (log != null) {
+			log.log(LogService.LOG_ERROR, "Hello");
+		}
 	}
 
 	@Focus
