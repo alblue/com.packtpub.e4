@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
-import com.packtpub.e4.application.StringService;
+import com.packtpub.e4.application.IStringService;
 
 @SuppressWarnings("restriction")
 public class Rainbow {
@@ -33,7 +33,7 @@ public class Rainbow {
 	@Inject
 	private IEventBroker broker;
 	@Inject
-	private StringService stringService;
+	private IStringService stringService;
 	
 	@PostConstruct
 	private void create(Composite parent) {

@@ -9,13 +9,6 @@
  */
 package com.packtpub.e4.application;
 
-import org.eclipse.e4.core.di.annotations.Creatable;
-
-@SuppressWarnings("restriction")
-@Creatable
-public class StringService implements IStringService {
-	@Override
-	public String process(String string) {
-		return string.toUpperCase();
-	}
+public interface IStringService {
+	public abstract String process(String string);
 }
