@@ -3,27 +3,32 @@
       id="com.packtpub.e4.feature"
       label="Feature"
       version="1.0.0.qualifier"
-      provider-name="PACKTPUB">
+      provider-name="PACKTPUB"
+      plugin="com.packtpub.e4.clock.ui">
 
    <description url="http://github.com/alblue/com.packtpub.e4/blob/master/README.md">
-This feature contains plug-ins for the Packt Publishing book
-"Eclipse Plugin Development by Example: Beginners Guide"
+      This feature contains plug-ins for the Packt Publishing book
+&quot;Eclipse Plugin Development by Example: Beginners Guide&quot;
 
 ISBN-10: 1782160329
 ISBN-13: 978-1782160328
    </description>
 
    <copyright url="http://github.com/alblue/com.packtpub.e4/blob/master/COPYING.md">
-Copyright (c) 2013, Alex Blewitt, Bandlem Ltd
+      Copyright (c) 2013, Alex Blewitt, Bandlem Ltd
 Copyright (c) 2013, Packt Publishing Ltd
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
-All rights reserved. This program and the accompanying materials
+      All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </license>
+
+   <requires>
+      <import feature="org.eclipse.jgit" version="2.2.0"/>
+   </requires>
 
    <plugin
          id="com.packtpub.e4.clock.ui"
