@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Plugin
+Bundle-SymbolicName: com.packtpub.e4.junit.plugin
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.packtpub.e4.junit.plugin.Activator
+Bundle-Vendor: PACKTPUB
+Require-Bundle: org.eclipse.core.runtime,
+ org.junit
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
