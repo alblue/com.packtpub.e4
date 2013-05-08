@@ -12,7 +12,10 @@ package com.packtpub.e4.junit.plugin;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
@@ -55,6 +58,12 @@ public class UITest {
 		bot.button("OK").click();
 		SWTBotView timeZoneView = bot.viewByTitle("Time Zone View");
 		assertNotNull(timeZoneView);
+		Widget widget = timeZoneView.getWidget();
+		org.hamcrest.Matcher<CTabItem> matcher = WidgetMatcherFactory
+				.widgetOfType(CTabItem.class);
+		final java.util.List<? extends CTabItem> ctabs = bot.widgets(matcher,
+				widget);
+		assertEquals(18, ctabs.size());
 	}
 
 	@Test
