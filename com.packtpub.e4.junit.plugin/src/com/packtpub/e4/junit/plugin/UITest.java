@@ -18,7 +18,9 @@ import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.results.StringResult;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -64,6 +66,13 @@ public class UITest {
 		final java.util.List<? extends CTabItem> ctabs = bot.widgets(matcher,
 				widget);
 		assertEquals(18, ctabs.size());
+		String tabText = UIThreadRunnable.syncExec(new StringResult() {
+			@Override
+			public String run() {
+				return ctabs.get(0).getText();
+			}
+		});
+		assertEquals("Africa", tabText);
 	}
 
 	@Test
