@@ -11,7 +11,14 @@ package com.packtpub.e4.junit.plugin;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayInputStream;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
@@ -21,6 +28,7 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.results.StringResult;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -38,6 +46,43 @@ public class UITest {
 		} catch (WidgetNotFoundException e) {
 			// ignore
 		}
+	}
+
+	@Test
+	public void createJavaProject() throws Exception {
+		String projectName = "SWTBot Java Project";
+		bot.menu("File").menu("Project...").click();
+		SWTBotShell shell = bot.shell("New Project");
+		shell.activate();
+		bot.tree().expandNode("Java").select("Java Project");
+		bot.button("Next >").click();
+		bot.textWithLabel("Project name:").setText(projectName);
+		bot.button("Finish").click();
+		final IProject project = getProject(projectName);
+		assertTrue(project.exists());
+		final IFolder src = project.getFolder("src");
+		final IFolder bin = project.getFolder("bin");
+		if (!src.exists()) {
+			src.create(true, true, null);
+		}
+		IFile test = src.getFile("Test.java");
+		test.create(new ByteArrayInputStream("class Test{}".getBytes()), true,
+				null);
+		bot.waitUntil(new DefaultCondition() {
+			@Override
+			public boolean test() throws Exception {
+				return project.getFolder("bin").getFile("Test.class").exists();
+			}
+
+			public String getFailureMessage() {
+				return "File bin/Test.class was not created";
+			}
+		});
+		assertTrue(bin.getFile("Test.class").exists());
+	}
+
+	private IProject getProject(String name) {
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(name);
 	}
 
 	@Test
