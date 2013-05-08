@@ -20,6 +20,17 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class UITest {
 	@Test
+	public void createProject() {
+		SWTWorkbenchBot bot = new SWTWorkbenchBot();
+		bot.menu("File").menu("Project...").click();
+		SWTBotShell shell = bot.shell("New Project");
+		shell.activate();
+		bot.tree().expandNode("General").select("Project");
+		bot.button("Next >").click();
+		bot.textWithLabel("Project name:").setText("SWTBot Test Project");
+		bot.button("Finish").click();
+	}
+	@Test
 	public void testUI() {
 		SWTWorkbenchBot bot = new SWTWorkbenchBot();
 		SWTBotShell[] shells = bot.shells();
