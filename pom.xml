@@ -15,6 +15,7 @@
   <modules>
     <module>com.packtpub.e4.clock.ui</module>
     <module>com.packtpub.e4.feature</module>
+    <module>com.packtpub.e4.update</module>
   </modules>
   <build>
     <plugins>

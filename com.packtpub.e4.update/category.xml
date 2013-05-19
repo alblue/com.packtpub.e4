@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/com.packtpub.e4.feature_1.0.0.201305071957.jar" id="com.packtpub.e4.feature" version="1.0.0.201305071957">
+   <feature id="com.packtpub.e4.feature" version="0.0.0">
       <category name="com.packtpub.e4.category"/>
    </feature>
    <category-def name="com.packtpub.e4.category" label="PacktPub Example E4 Category">
