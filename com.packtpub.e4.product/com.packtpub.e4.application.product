@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="com.packtpub.e4.application" uid="com.packtpub.e4.application.product" id="com.packtpub.e4.application.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-clearPersistedState</programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <features>
+     <feature id="com.packtpub.e4.feature" version="0.0.0"/>
+     <feature id="org.eclipse.rcp" version="0.0.0"/>
+   </features>
+
+  <configurations>
+    <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4"/>
+    <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2"/>
+    <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2"/>
+    <!-- for 'dropins' directory support -->
+    <!-- plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4"/ -->
+    <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1"/>
+    <!-- disable old update manager -->
+    <property name="org.eclipse.update.reconcile" value="false"/>
+    <!-- for 'new' update manager support -->
+    <!-- plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4"/ -->
+  </configurations>
+</product>
