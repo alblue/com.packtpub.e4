@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Hello
 Bundle-SymbolicName: com.packtpub.e4.hello.ui; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.2.3.RELEASE
 Bundle-Activator: com.packtpub.e4.hello.ui.Activator
 Bundle-Vendor: PacktPub
 Require-Bundle: org.eclipse.ui,

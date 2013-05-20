@@ -12,14 +12,19 @@
     <tycho-version>0.18.0</tycho-version>
     <eclipse>http://download.eclipse.org/releases/juno</eclipse>
     <swtbot>http://download.eclipse.org/technology/swtbot/releases/latest</swtbot>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <modules>
+    <module>com.packtpub.e4.application</module>
     <module>com.packtpub.e4.clock.ui</module>
     <module>com.packtpub.e4.feature</module>
-    <module>com.packtpub.e4.update</module>
-    <module>com.packtpub.e4.application</module>
-    <module>com.packtpub.e4.product</module>
+    <module>com.packtpub.e4.headless.application</module>
+    <module>com.packtpub.e4.hello.ui</module>
+    <module>com.packtpub.e4.junit.example</module>
     <module>com.packtpub.e4.junit.plugin</module>
+    <module>com.packtpub.e4.minimark.ui</module>
+    <module>com.packtpub.e4.product</module>
+    <module>com.packtpub.e4.update</module>
   </modules>
   <build>
     <plugins>
