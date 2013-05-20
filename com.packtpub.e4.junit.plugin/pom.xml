@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.packtpub.e4</groupId>
+    <artifactId>com.packtpub.e4.parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.packtpub.e4</groupId>
+  <artifactId>com.packtpub.e4.junit.plugin</artifactId>
+  <!-- version defaults to the same value as the parent -->
+  <!--version>1.0.0-SNAPSHOT</version-->
+  <packaging>eclipse-test-plugin</packaging>
+  <build>
+    <sourceDirectory>src</sourceDirectory> 
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <useUIHarness>true</useUIHarness>
+          <useUIThread>false</useUIThread>
+          <argLine>${swtbot.args}</argLine>
+          <product>org.eclipse.sdk.ide</product>
+          <application>org.eclipse.ui.ide.workbench</application>
+          <dependencies>
+            <dependency>
+              <type>p2-installable-unit</type>
+              <groupId>com.packtpub.e4</groupId>
+              <artifactId>com.packtpub.e4.clock.ui</artifactId>
+            </dependency>
+            <dependency>
+              <type>p2-installable-unit</type>
+              <artifactId>org.eclipse.sdk.feature.group</artifactId>
+            </dependency>
+          </dependencies>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>OSX</id>
+      <activation>
+        <os>
+  	<family>mac</family>
+        </os>
+      </activation>
+      <properties>
+        <swtbot.args>-Xmx1024m -XstartOnFirstThread</swtbot.args>
+      </properties>
+    </profile>
+    <profile>
+      <id>NotOSX</id>
+      <activation>
+        <os>
+  	<family>!mac</family>
+        </os>
+      </activation>
+      <properties>
+        <swtbot.args>-Xmx1024m</swtbot.args>
+      </properties>
+    </profile>
+  </profiles>
+</project>

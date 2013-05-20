@@ -11,6 +11,7 @@
   <properties>
     <tycho-version>0.18.0</tycho-version>
     <eclipse>http://download.eclipse.org/releases/juno</eclipse>
+    <swtbot>http://download.eclipse.org/technology/swtbot/releases/latest</swtbot>
   </properties>
   <modules>
     <module>com.packtpub.e4.clock.ui</module>
@@ -18,6 +19,7 @@
     <module>com.packtpub.e4.update</module>
     <module>com.packtpub.e4.application</module>
     <module>com.packtpub.e4.product</module>
+    <module>com.packtpub.e4.junit.plugin</module>
   </modules>
   <build>
     <plugins>
@@ -73,6 +75,11 @@
       <id>eclipse</id>
       <layout>p2</layout>
       <url>${eclipse}</url>
+    </repository>
+    <repository>
+      <id>swtbot</id>
+      <layout>p2</layout>
+      <url>${swtbot}</url>
     </repository>
   </repositories>
 </project>
