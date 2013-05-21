@@ -8,5 +8,6 @@ Bundle-Vendor: PacktPub
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.views;bundle-version="3.6.100"
+Import-Package: org.ops4j.pax.url.mvn;resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
