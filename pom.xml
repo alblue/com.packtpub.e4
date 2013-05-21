@@ -101,17 +101,53 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>target</id>
+      <activation>
+        <property>
+          <name>target</name>
+        </property>
+      </activation>
+      <modules>
+        <module>com.packtpub.e4.target</module>
+      </modules>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <configuration>
+              <target>
+                <artifact>
+                  <groupId>com.packtpub.e4</groupId>
+                  <artifactId>com.packtpub.e4.target</artifactId>
+                  <version>1.2.3.RELEASE</version>
+                </artifact>
+              </target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>non-target</id>
+      <activation>
+        <property>
+          <name>!target</name>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>eclipse</id>
+          <layout>p2</layout>
+          <url>${eclipse}</url>
+        </repository>
+        <repository>
+          <id>swtbot</id>
+          <layout>p2</layout>
+          <url>${swtbot}</url>
+        </repository>
+      </repositories>
+    </profile>
   </profiles>
-  <repositories>
-    <repository>
-      <id>eclipse</id>
-      <layout>p2</layout>
-      <url>${eclipse}</url>
-    </repository>
-    <repository>
-      <id>swtbot</id>
-      <layout>p2</layout>
-      <url>${swtbot}</url>
-    </repository>
-  </repositories>
 </project>
