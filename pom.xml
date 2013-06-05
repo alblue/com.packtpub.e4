@@ -149,5 +149,12 @@
         </repository>
       </repositories>
     </profile>
+    <profile>
+      <id>kepler</id>
+      <properties>
+        <eclipse>http://download.eclipse.org/releases/kepler</eclipse>
+        <swtbot>http://download.eclipse.org/technology/swtbot/snapshots</swtbot>
+      </properties>
+    </profile>
   </profiles>
 </project>
