@@ -7,6 +7,8 @@ This repository contains source code for the Packt Publishing book
 ISBN-10: 1782160329
 ISBN-13: 978-1782160328
 
+http://www.amazon.com/Eclipse-Plug--Development-Example-Beginners/dp/1782160329
+
 Contents
 --------
 
