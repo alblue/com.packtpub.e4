@@ -14,6 +14,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TimeZone;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -58,6 +61,7 @@ public class UITest {
 		bot.button("Next >").click();
 		bot.textWithLabel("Project name:").setText(projectName);
 		bot.button("Finish").click();
+
 		final IProject project = getProject(projectName);
 		assertTrue(project.exists());
 		final IFolder src = project.getFolder("src");
@@ -66,8 +70,15 @@ public class UITest {
 			src.create(true, true, null);
 		}
 		IFile test = src.getFile("Test.java");
-		test.create(new ByteArrayInputStream("class Test{}".getBytes()), true,
-				null);
+		test.create(new ByteArrayInputStream("class Test{}".getBytes()), true, null);
+		try {
+			SWTBotShell dialog = bot.shell("Open Associated Perspective?");
+			// shell.activate();
+			bot.button("Yes").click();
+		} catch (WidgetNotFoundException e) {
+			// ignore
+		}
+
 		bot.waitUntil(new DefaultCondition() {
 			@Override
 			public boolean test() throws Exception {
@@ -106,27 +117,37 @@ public class UITest {
 		SWTBotView timeZoneView = bot.viewByTitle("Time Zone View");
 		assertNotNull(timeZoneView);
 		Widget widget = timeZoneView.getWidget();
-		org.hamcrest.Matcher<CTabItem> matcher = WidgetMatcherFactory
-				.widgetOfType(CTabItem.class);
-		final java.util.List<? extends CTabItem> ctabs = bot.widgets(matcher,
-				widget);
-		assertEquals(18, ctabs.size());
+		org.hamcrest.Matcher<CTabItem> matcher = WidgetMatcherFactory.widgetOfType(CTabItem.class);
+		final java.util.List<? extends CTabItem> ctabs = bot.widgets(matcher, widget);
+		String[] ids = TimeZone.getAvailableIDs();
+		Set<String> tabs = new HashSet<>();
+		for (int i = 0; i < ids.length; i++) {
+			String[] split = ids[i].split("/");
+			if (split.length == 2) {
+				tabs.add(split[0]);
+			}
+		}
+		assertEquals(tabs.size(), ctabs.size());
 		String tabText = UIThreadRunnable.syncExec(new StringResult() {
 			@Override
 			public String run() {
 				return ctabs.get(0).getText();
 			}
 		});
+	//	String tabText2 = UIThreadRunnable.syncExec(() -> ctabs.get(0).getText());
+
 		assertEquals("Africa", tabText);
 	}
 
 	@Test
 	public void testUI() {
 		SWTBotShell[] shells = bot.shells();
-		for (int i = 0; i < shells.length; i++) {
-			if (shells[i].isVisible()) {
-				assertEquals("Java - Eclipse SDK", shells[i].getText());
+		boolean found = false;
+		for (int i = 0; i < shells.length && !found; i++) {
+			if (shells[i].isVisible() && shells[i].getText().contains("Eclipse")) {
+				found = true;
 			}
 		}
+		assertTrue(found);
 	}
 }

@@ -59,7 +59,7 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		// Demo to show how to use pomDependencies consider
-		Object handler = new org.ops4j.pax.url.mvn.Handler();
+		//Object handler = new org.ops4j.pax.url.mvn.Handler();
 		plugin = this;
 		int launchCount = getPreferenceStore().getInt("launchCount");
 		IEclipsePreferences eclipsePreferences = InstanceScope.INSTANCE

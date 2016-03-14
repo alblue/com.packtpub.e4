@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Example
+Bundle-SymbolicName: com.packtpub.e4.junit.example
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.packtpub.e4.junit.example
