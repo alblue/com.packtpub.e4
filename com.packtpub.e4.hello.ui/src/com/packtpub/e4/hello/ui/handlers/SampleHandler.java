@@ -29,7 +29,7 @@ public class SampleHandler extends AbstractHandler {
 		MessageDialog.openInformation(
 				window.getShell(),
 				"Hello",
-				"Hello, Eclipse world");
+				"Hello again, Eclipse world");
 		return null;
 	}
 }
