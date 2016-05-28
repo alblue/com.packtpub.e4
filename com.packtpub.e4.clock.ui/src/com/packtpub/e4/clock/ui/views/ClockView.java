@@ -24,7 +24,8 @@ public class ClockView extends ViewPart {
 		clock.addPaintListener(this::drawClock);
 		Runnable redraw = () -> {
 			while (!clock.isDisposed()) {
-				clock.redraw();
+				// clock.redraw();
+				clock.getDisplay().asyncExec(() -> clock.redraw());
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
