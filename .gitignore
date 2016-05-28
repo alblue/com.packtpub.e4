@@ -1,2 +1,4 @@
 .metadata
+.DS_Store
 bin
+target
