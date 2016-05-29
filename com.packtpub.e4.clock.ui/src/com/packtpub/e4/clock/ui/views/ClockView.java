@@ -9,17 +9,22 @@
  */
 package com.packtpub.e4.clock.ui.views;
 
+import java.time.ZoneId;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.ClockWidget;
 
 public class ClockView extends ViewPart {
+	private Combo timeZones;
+
 	public void createPartControl(Composite parent) {
 		Object[] objects = parent.getDisplay().getDeviceData().objects;
 		int count = 0;
@@ -37,8 +42,14 @@ public class ClockView extends ViewPart {
 		clock1.setLayoutData(new RowData(20, 20));
 		clock2.setLayoutData(new RowData(50, 50));
 		clock3.setLayoutData(new RowData(100, 100));
+		timeZones = new Combo(parent, SWT.DROP_DOWN);
+		timeZones.setVisibleItemCount(5);
+		for (String zone : ZoneId.getAvailableZoneIds()) {
+			timeZones.add(zone);
+		}
 	}
 
 	public void setFocus() {
+		timeZones.setFocus();
 	}
 }
