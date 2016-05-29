@@ -15,6 +15,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.graphics.Region;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -62,15 +63,34 @@ public class Activator extends AbstractUIPlugin {
 				trayItem.setImage(image);
 				trayItem.addSelectionListener(new SelectionAdapter() {
 					public void widgetSelected(SelectionEvent e) {
-						Shell shell = new Shell(display);
+						Shell shell = new Shell(display, SWT.ON_TOP | SWT.NO_TRIM);
+						shell.setAlpha(128);
+						final Region region = new Region();
+						region.add(circle(25, 25, 25));
+						shell.setRegion(region);
 						shell.setLayout(new FillLayout());
 						new ClockWidget(shell, SWT.NONE, new RGB(255, 0, 255));
 						shell.pack();
 						shell.open();
+						shell.addDisposeListener(de -> region.dispose());
 					}
 				});
 			}
 		});
+	}
+
+	private static int[] circle(int r, int offsetX, int offsetY) {
+		int[] polygon = new int[8 * r + 4];
+		// x^2 + y^2 = r^2
+		for (int i = 0; i < 2 * r + 1; i++) {
+			int x = i - r;
+			int y = (int) Math.sqrt(r * r - x * x);
+			polygon[2 * i] = offsetX + x;
+			polygon[2 * i + 1] = offsetY + y;
+			polygon[8 * r - 2 * i - 2] = offsetX + x;
+			polygon[8 * r - 2 * i - 1] = offsetY - y;
+		}
+		return polygon;
 	}
 
 	/*
