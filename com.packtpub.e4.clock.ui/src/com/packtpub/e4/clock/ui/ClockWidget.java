@@ -24,8 +24,8 @@ public class ClockWidget extends Canvas {
 
 	public ClockWidget(Composite parent, int style, RGB rgb) {
 		super(parent, style);
-		// FIXME color is leaked!
 		this.color = new Color(parent.getDisplay(), rgb);
+		addDisposeListener(e -> color.dispose());
 		addPaintListener(this::drawClock);
 		Runnable redraw = () -> {
 			while (!this.isDisposed()) {
@@ -63,4 +63,12 @@ public class ClockWidget extends Canvas {
 		}
 		return new Point(size, size);
 	}
+
+	// This does not work - add a dispose listener instead
+	// @Override
+	// public void dispose() {
+	// if (color != null && !color.isDisposed())
+	// color.dispose();
+	// super.dispose();
+	// }
 }
