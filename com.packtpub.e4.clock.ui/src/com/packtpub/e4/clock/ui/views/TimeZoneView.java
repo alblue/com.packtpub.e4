@@ -17,8 +17,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.part.ViewPart;
 
 import com.packtpub.e4.clock.ui.ClockWidget;
@@ -38,7 +40,10 @@ public class TimeZoneView extends ViewPart {
 			item.setControl(clocks);
 			RGB rgb = new RGB(128, 128, 128);
 			zones.forEach(zone -> {
-				new ClockWidget(clocks, SWT.NONE, rgb).setZone(zone);
+				Group group = new Group(clocks, SWT.SHADOW_ETCHED_IN);
+				group.setText(zone.getId().split("/")[1]);
+				group.setLayout(new FillLayout());
+				new ClockWidget(group, SWT.NONE, rgb).setZone(zone);
 			});
 		});
 		tabs.setSelection(0);
