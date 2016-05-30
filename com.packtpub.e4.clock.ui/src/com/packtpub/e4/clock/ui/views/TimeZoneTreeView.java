@@ -28,6 +28,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISharedImages;
 
 import com.packtpub.e4.clock.ui.internal.TimeZoneComparator;
+import com.packtpub.e4.clock.ui.internal.TimeZoneViewerComparator;
 
 public class TimeZoneTreeView {
 	private TreeViewer treeViewer;
@@ -46,6 +47,8 @@ public class TimeZoneTreeView {
 		treeViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new TimeZoneLabelProvider(images, ir, fr)));
 		treeViewer.setContentProvider(new TimeZoneContentProvider());
 		treeViewer.setInput(new Object[] { TimeZoneComparator.getTimeZones() });
+		treeViewer.setData("REVERSE", Boolean.TRUE);
+		treeViewer.setComparator(new TimeZoneViewerComparator());
 	}
 
 	@Focus
