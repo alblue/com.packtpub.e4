@@ -31,14 +31,14 @@
             name="Time Zone Tree View"
             restorable="true">
       </e4view>
-      <e4view
+      <!-- e4view - converted to part descriptor in fragment.e4xmi
             category="com.packtpub.e4.clock.ui"
             class="com.packtpub.e4.clock.ui.views.TimeZoneTableView"
             icon="icons/sample.gif"
             id="com.packtpub.e4.clock.ui.views.TimeZoneTableView"
             name="Time Zone Table View"
             restorable="true">
-      </e4view>
+      </e4view -->
    </extension>
    <extension
          id="com.packtpub.e4.clock.ui.fragment"
