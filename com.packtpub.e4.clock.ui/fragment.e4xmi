@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_5bK9wCajEea8NImc6oTGTQ"/>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_5bK9wCajEea8NImc6oTGTQ">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_mnmpsCamEea8NImc6oTGTQ" featurename="commands" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="commands:Command" xmi:id="_i53sUCapEeaCx61ld7Qt3A" elementId="com.packtpub.e4.clock.ui.command.hello" commandName="Hello" description="Says Hello World"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_RCxgMCavEeaCx61ld7Qt3A" featurename="handlers" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="commands:Handler" xmi:id="_2uCaYCapEeaCx61ld7Qt3A" elementId="com.packtpub.e4.clock.ui.handler.HelloHandler" contributionURI="bundleclass://com.packtpub.e4.clock.ui/com.packtpub.e4.clock.ui.handlers.HelloHandler" command="_i53sUCapEeaCx61ld7Qt3A"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_TicyMCawEeaCx61ld7Qt3A" featurename="menuContributions" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_ZVGtUCawEeaCx61ld7Qt3A" elementId="com.packtpub.e4.clock.ui.menucontribution.hello" parentId="help">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_yUAa4CawEeaCx61ld7Qt3A" elementId="com.packtpub.e4.clock.ui.handledmenuitem.hello" label="Hello" command="_i53sUCapEeaCx61ld7Qt3A"/>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>
