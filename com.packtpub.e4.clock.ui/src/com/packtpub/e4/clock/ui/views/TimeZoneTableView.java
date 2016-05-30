@@ -19,6 +19,8 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
+import com.packtpub.e4.clock.ui.internal.TimeZoneIDColumn;
+
 public class TimeZoneTableView {
 	private TableViewer tableViewer;
 
@@ -27,6 +29,7 @@ public class TimeZoneTableView {
 		tableViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL);
 		tableViewer.getTable().setHeaderVisible(true);
 		tableViewer.setContentProvider(ArrayContentProvider.getInstance());
+		new TimeZoneIDColumn().addColumnTo(tableViewer);
 		tableViewer.setInput(ZoneId.getAvailableZoneIds().stream().map(ZoneId::of).toArray());
 	}
 
