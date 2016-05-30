@@ -40,4 +40,11 @@
             restorable="true">
       </e4view>
    </extension>
+   <extension
+         id="com.packtpub.e4.clock.ui.fragment"
+         point="org.eclipse.e4.workbench.model">
+      <fragment
+            uri="fragment.e4xmi">
+      </fragment>
+   </extension>
 </plugin>
