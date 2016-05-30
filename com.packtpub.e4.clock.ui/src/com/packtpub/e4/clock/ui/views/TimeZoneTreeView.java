@@ -16,7 +16,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.Focus;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -35,6 +34,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 
 import com.packtpub.e4.clock.ui.internal.TimeZoneComparator;
+import com.packtpub.e4.clock.ui.internal.TimeZoneDialog;
 import com.packtpub.e4.clock.ui.internal.TimeZoneViewerComparator;
 import com.packtpub.e4.clock.ui.internal.TimeZoneViewerFilter;
 
@@ -71,7 +71,8 @@ public class TimeZoneTreeView {
 			}
 			if (selectedValue instanceof ZoneId) {
 				ZoneId timeZone = (ZoneId) selectedValue;
-				MessageDialog.openInformation(shell, timeZone.getId(), timeZone.toString());
+				// MessageDialog.openInformation(shell, timeZone.getId(), timeZone.toString());
+				new TimeZoneDialog(shell, timeZone).open();
 			}
 		});
 	}
