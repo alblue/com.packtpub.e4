@@ -47,4 +47,13 @@
             uri="fragment.e4xmi">
       </fragment>
    </extension>
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition id="when.hello.is.active">
+         <with variable="activeContexts">
+            <iterate operator="or">
+               <equals value="org.eclipse.ui.context.dialog"/>
+            </iterate>
+         </with>
+      </definition>
+   </extension>
 </plugin>
