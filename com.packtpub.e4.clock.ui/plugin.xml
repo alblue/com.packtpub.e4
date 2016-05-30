@@ -23,6 +23,13 @@
             name="Time Zone View"
             restorable="true">
       </view>
+      <e4view
+            category="com.packtpub.e4.clock.ui"
+            class="com.packtpub.e4.clock.ui.views.TimeZoneTreeView"
+            icon="icons/sample.gif"
+            id="com.packtpub.e4.clock.ui.views.TimeZoneTreeView"
+            name="Time Zone Tree View"
+            restorable="true">
+      </e4view>
    </extension>
-
 </plugin>
