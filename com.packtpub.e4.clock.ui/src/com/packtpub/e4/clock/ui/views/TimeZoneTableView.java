@@ -27,7 +27,7 @@ public class TimeZoneTableView {
 		tableViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL);
 		tableViewer.getTable().setHeaderVisible(true);
 		tableViewer.setContentProvider(ArrayContentProvider.getInstance());
-		tableViewer.setInput(ZoneId.getAvailableZoneIds());
+		tableViewer.setInput(ZoneId.getAvailableZoneIds().stream().map(ZoneId::of).toArray());
 	}
 
 	@Focus
