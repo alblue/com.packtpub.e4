@@ -24,7 +24,7 @@ public class HelloHandler {
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
 					monitor.beginTask("Preparing", 5000);
-					for (int i = 0; i < 50; i++) {
+					for (int i = 0; i < 50 && !monitor.isCanceled(); i++) {
 						Thread.sleep(100);
 						monitor.worked(100);
 					}
@@ -32,9 +32,11 @@ public class HelloHandler {
 				} finally {
 					monitor.done();
 				}
-				display.asyncExec(() -> {
-					MessageDialog.openInformation(null, "Hello", "World");
-				});
+				if (!monitor.isCanceled()) {
+					display.asyncExec(() -> {
+						MessageDialog.openInformation(null, "Hello", "World");
+					});
+				}
 				return Status.OK_STATUS;
 			}
 		};
