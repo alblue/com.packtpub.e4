@@ -9,6 +9,8 @@
  */
 package com.packtpub.e4.clock.ui.handlers;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -18,10 +20,13 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.progress.IProgressConstants2;
 
 public class HelloHandler {
 	@Execute
-	public void execute(final UISynchronize display) {
+	public void execute(final UISynchronize display, final ICommandService commandService) {
 		Job job = new Job("About to say hello") {
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
@@ -67,6 +72,12 @@ public class HelloHandler {
 				}
 			}
 		};
+		Command command = commandService.getCommand("com.packtpub.e4.clock.ui.command.hello");
+		if (command != null) {
+			job.setProperty(IProgressConstants2.COMMAND_PROPERTY, ParameterizedCommand.generateCommand(command, null));
+			job.setProperty(IProgressConstants2.ICON_PROPERTY,
+					ImageDescriptor.createFromURL(HelloHandler.class.getResource("/icons/sample.gif")));
+		}
 		job.schedule();
 		return;
 	}
