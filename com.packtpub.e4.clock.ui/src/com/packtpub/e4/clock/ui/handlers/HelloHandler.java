@@ -12,6 +12,7 @@ package com.packtpub.e4.clock.ui.handlers;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.di.UISynchronize;
@@ -25,6 +26,18 @@ public class HelloHandler {
 				try {
 					monitor.beginTask("Preparing", 5000);
 					for (int i = 0; i < 50 && !monitor.isCanceled(); i++) {
+						if (i == 10) {
+							monitor.subTask("Doing something");
+						} else if (i == 12) {
+							// NB SubProgressMonitor is deprecated
+							// Will be replaced with SubMonitor next
+							checkDozen(new SubProgressMonitor(monitor, 100));
+							continue;
+						} else if (i == 25) {
+							monitor.subTask("Doing something else");
+						} else if (i == 40) {
+							monitor.subTask("Nearly there");
+						}
 						Thread.sleep(100);
 						monitor.worked(100);
 					}
@@ -38,6 +51,19 @@ public class HelloHandler {
 					});
 				}
 				return Status.OK_STATUS;
+			}
+
+			private void checkDozen(IProgressMonitor monitor) {
+				try {
+					monitor.beginTask("Checking a dozen", 12);
+					for (int i = 0; i < 12; i++) {
+						Thread.sleep(10);
+						monitor.worked(1);
+					}
+				} catch (InterruptedException e) {
+				} finally {
+					monitor.done();
+				}
 			}
 		};
 		job.schedule();
