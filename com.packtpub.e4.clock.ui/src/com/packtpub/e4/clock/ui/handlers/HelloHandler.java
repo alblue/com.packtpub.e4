@@ -23,10 +23,18 @@ public class HelloHandler {
 		Job job = new Job("About to say hello") {
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
-					Thread.sleep(5000);
+					monitor.beginTask("Preparing", 5000);
+					for (int i = 0; i < 50; i++) {
+						Thread.sleep(100);
+						monitor.worked(100);
+					}
 				} catch (InterruptedException e) {
+				} finally {
+					monitor.done();
 				}
-				display.asyncExec(() -> MessageDialog.openInformation(null, "Hello", "World"));
+				display.asyncExec(() -> {
+					MessageDialog.openInformation(null, "Hello", "World");
+				});
 				return Status.OK_STATUS;
 			}
 		};
