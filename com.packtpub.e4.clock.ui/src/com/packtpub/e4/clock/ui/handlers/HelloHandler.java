@@ -11,8 +11,9 @@ package com.packtpub.e4.clock.ui.handlers;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.di.UISynchronize;
@@ -24,22 +25,20 @@ public class HelloHandler {
 		Job job = new Job("About to say hello") {
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
-					monitor.beginTask("Preparing", 5000);
-					for (int i = 0; i < 50 && !monitor.isCanceled(); i++) {
+					SubMonitor subMonitor = SubMonitor.convert(monitor, "Preparing", 5000);
+					for (int i = 0; i < 50 && !subMonitor.isCanceled(); i++) {
 						if (i == 10) {
-							monitor.subTask("Doing something");
+							subMonitor.subTask("Doing something");
 						} else if (i == 12) {
-							// NB SubProgressMonitor is deprecated
-							// Will be replaced with SubMonitor next
-							checkDozen(new SubProgressMonitor(monitor, 100));
+							checkDozen(subMonitor.newChild(100));
 							continue;
 						} else if (i == 25) {
-							monitor.subTask("Doing something else");
+							subMonitor.subTask("Doing something else");
 						} else if (i == 40) {
-							monitor.subTask("Nearly there");
+							subMonitor.subTask("Nearly there");
 						}
 						Thread.sleep(100);
-						monitor.worked(100);
+						subMonitor.worked(100);
 					}
 				} catch (InterruptedException e) {
 				} finally {
@@ -55,6 +54,8 @@ public class HelloHandler {
 
 			private void checkDozen(IProgressMonitor monitor) {
 				try {
+					if (monitor == null)
+						monitor = new NullProgressMonitor();
 					monitor.beginTask("Checking a dozen", 12);
 					for (int i = 0; i < 12; i++) {
 						Thread.sleep(10);
