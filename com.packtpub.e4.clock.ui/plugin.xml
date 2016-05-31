@@ -51,7 +51,7 @@
       <definition id="when.hello.is.active">
          <with variable="activeContexts">
             <iterate operator="or">
-               <equals value="org.eclipse.ui.context.dialog"/>
+               <equals value="org.eclipse.ui.contexts.dialogAndWindow"/>
             </iterate>
          </with>
       </definition>
