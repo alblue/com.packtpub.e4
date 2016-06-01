@@ -15,7 +15,9 @@ import java.time.ZoneId;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.resource.FontRegistry;
@@ -40,6 +42,7 @@ import com.packtpub.e4.clock.ui.internal.TimeZoneDialog;
 import com.packtpub.e4.clock.ui.internal.TimeZoneViewerComparator;
 import com.packtpub.e4.clock.ui.internal.TimeZoneViewerFilter;
 
+@SuppressWarnings("restriction")
 public class TimeZoneTreeView {
 	private TreeViewer treeViewer;
 	@Inject
@@ -47,6 +50,9 @@ public class TimeZoneTreeView {
 	@Inject
 	@Optional
 	private ESelectionService selectionService;
+	@Preference(nodePath = "com.packtpub.e4.clock.ui")
+	@Inject
+	IEclipsePreferences preferences;
 
 	@PostConstruct
 	public void create(Composite parent) {
@@ -87,6 +93,7 @@ public class TimeZoneTreeView {
 				selectionService.setSelection(selection);
 			}
 		});
+		System.out.println("Launch count is: " + preferences.getInt("launchCount", 0));
 	}
 
 	@Focus
