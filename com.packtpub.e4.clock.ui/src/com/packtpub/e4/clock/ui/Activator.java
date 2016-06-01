@@ -9,6 +9,7 @@
  */
 package com.packtpub.e4.clock.ui;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -23,6 +24,7 @@ import org.eclipse.swt.widgets.Tray;
 import org.eclipse.swt.widgets.TrayItem;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.service.prefs.Preferences;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -77,6 +79,14 @@ public class Activator extends AbstractUIPlugin {
 				});
 			}
 		});
+		// import org.osgi.service.prefs.Preferences;
+		// import org.eclipse.core.runtime.preferences.InstanceScope;
+		// ^ add these if necessary to top of the class
+		Preferences preferences = InstanceScope.INSTANCE.getNode("com.packtpub.e4.clock.ui");
+		int launchCount = preferences.getInt("launchCount", 0) + 1;
+		preferences.putInt("launchCount", launchCount);
+		System.out.println("I have been launched " + launchCount + " times");
+		preferences.sync();
 	}
 
 	private static int[] circle(int r, int offsetX, int offsetY) {
