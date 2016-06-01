@@ -15,7 +15,6 @@ import java.time.ZoneId;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.di.Focus;
@@ -50,9 +49,9 @@ public class TimeZoneTreeView {
 	@Inject
 	@Optional
 	private ESelectionService selectionService;
-	@Preference(nodePath = "com.packtpub.e4.clock.ui")
+	@Preference(nodePath = "com.packtpub.e4.clock.ui", value = "launchCount")
 	@Inject
-	IEclipsePreferences preferences;
+	int launchCount;
 
 	@PostConstruct
 	public void create(Composite parent) {
@@ -93,7 +92,7 @@ public class TimeZoneTreeView {
 				selectionService.setSelection(selection);
 			}
 		});
-		System.out.println("Launch count is: " + preferences.getInt("launchCount", 0));
+		System.out.println("Launch count is: " + launchCount);
 	}
 
 	@Focus
