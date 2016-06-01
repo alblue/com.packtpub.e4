@@ -19,6 +19,9 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 public class ClockPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 	protected void createFieldEditors() {
 		addField(new IntegerFieldEditor("launchCount", "Number of times it has been launched", getFieldEditorParent()));
+		IntegerFieldEditor offset = new IntegerFieldEditor("offset", "Current offset from GMT", getFieldEditorParent());
+		offset.setValidRange(-14, +12);
+		addField(offset);
 	}
 
 	public void init(IWorkbench workbench) {
