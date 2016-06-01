@@ -60,6 +60,12 @@
       <page name="Clock"
         class="com.packtpub.e4.clock.ui.ClockPreferencePage"
         category="org.eclipse.ui.preferencePages.Workbench"
-        id="com.packtpub.e4.clock.ui.preference.page"/>
+        id="com.packtpub.e4.clock.ui.preference.page">
+         <keywordReference id="com.packtpub.e4.clock.ui.keywords"/>
+      </page>
    </extension>
+   <extension point="org.eclipse.ui.keywords">
+      <keyword id="com.packtpub.e4.clock.ui.keywords"
+        label="offset timezone"/>
+  </extension>
 </plugin>
