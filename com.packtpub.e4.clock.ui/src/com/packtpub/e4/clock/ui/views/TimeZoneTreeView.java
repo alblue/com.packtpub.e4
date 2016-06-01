@@ -49,9 +49,13 @@ public class TimeZoneTreeView {
 	@Inject
 	@Optional
 	private ESelectionService selectionService;
-	@Preference(nodePath = "com.packtpub.e4.clock.ui", value = "launchCount")
-	@Inject
 	int launchCount;
+
+	@Inject
+	public void setLaunchCount(
+			@Preference(nodePath = "com.packtpub.e4.clock.ui", value = "launchCount") int launchCount) {
+		this.launchCount = launchCount;
+	}
 
 	@PostConstruct
 	public void create(Composite parent) {
