@@ -11,5 +11,14 @@
             name="Minimark">
       </editor>
    </extension>
-
+   <extension id="MinimarkBuilder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            callOnEmptyDelta="false"
+            hasNature="false"
+            isConfigurable="false"
+            supportsConfigurations="false">
+         <run class="com.packtpub.e4.minimark.ui.MinimarkBuilder"/>
+      </builder>
+   </extension>
 </plugin>
