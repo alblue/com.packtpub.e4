@@ -65,6 +65,7 @@ public class MinimarkVisitor implements IResourceProxyVisitor, IResourceDeltaVis
 	private void processResource(IResource resource) throws CoreException {
 		if (resource instanceof IFile && resource.exists()) {
 			try {
+				resource.deleteMarkers("com.packtpub.e4.minimark.ui.MinimarkMarker", true, IResource.DEPTH_INFINITE);
 				IFile file = (IFile) resource;
 				InputStream in = file.getContents();
 				String htmlName = file.getName().replace(".minimark", ".html");
@@ -75,7 +76,8 @@ public class MinimarkVisitor implements IResourceProxyVisitor, IResourceDeltaVis
 				ByteArrayInputStream contents = new ByteArrayInputStream(baos.toByteArray());
 				if (baos.size() < 100) {
 					// System.out.println("Minimark file is empty");
-					IMarker marker = resource.createMarker(IMarker.PROBLEM);
+					// IMarker marker = resource.createMarker(IMarker.PROBLEM);
+					IMarker marker = resource.createMarker("com.packtpub.e4.minimark.ui.MinimarkMarker");
 					marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
 					marker.setAttribute(IMarker.MESSAGE, "Minimark file is empty");
 					marker.setAttribute(IMarker.LINE_NUMBER, 1);
