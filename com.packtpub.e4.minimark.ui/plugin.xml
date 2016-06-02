@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.packtpub.e4.minimark.ui.MinimarkEditor"
+            default="false"
+            extensions="minimark"
+            id="com.packtpub.e4.minimark.ui.minimarkeditor"
+            name="Minimark">
+      </editor>
+   </extension>
+
+</plugin>
