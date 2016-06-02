@@ -29,7 +29,11 @@ import org.eclipse.core.runtime.Status;
 
 public class MinimarkVisitor implements IResourceProxyVisitor, IResourceDeltaVisitor {
 	public boolean visit(IResourceDelta delta) throws CoreException {
-		return false;
+		IResource resource = delta.getResource();
+		if (resource.getName().endsWith(".minimark")) {
+			processResource(resource);
+		}
+		return true;
 	}
 
 	public boolean visit(IResourceProxy proxy) throws CoreException {
