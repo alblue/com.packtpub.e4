@@ -18,6 +18,7 @@ import java.io.OutputStreamWriter;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
@@ -72,6 +73,15 @@ public class MinimarkVisitor implements IResourceProxyVisitor, IResourceDeltaVis
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				MinimarkTranslator.convert(new InputStreamReader(in), new OutputStreamWriter(baos));
 				ByteArrayInputStream contents = new ByteArrayInputStream(baos.toByteArray());
+				if (baos.size() < 100) {
+					// System.out.println("Minimark file is empty");
+					IMarker marker = resource.createMarker(IMarker.PROBLEM);
+					marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+					marker.setAttribute(IMarker.MESSAGE, "Minimark file is empty");
+					marker.setAttribute(IMarker.LINE_NUMBER, 1);
+					marker.setAttribute(IMarker.CHAR_START, 0);
+					marker.setAttribute(IMarker.CHAR_END, 0);
+				}
 				if (htmlFile.exists()) {
 					htmlFile.setContents(contents, true, false, null);
 				} else {
