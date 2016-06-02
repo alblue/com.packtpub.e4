@@ -29,9 +29,25 @@ import org.eclipse.core.runtime.Status;
 
 public class MinimarkVisitor implements IResourceProxyVisitor, IResourceDeltaVisitor {
 	public boolean visit(IResourceDelta delta) throws CoreException {
+		boolean deleted = (IResourceDelta.REMOVED & delta.getKind()) != 0;
 		IResource resource = delta.getResource();
-		if (resource.getName().endsWith(".minimark")) {
-			processResource(resource);
+		String name = resource.getName();
+		if (name.endsWith(".minimark")) {
+			if (deleted) {
+				String htmlName = name.replace(".minimark", ".html");
+				IFile htmlFile = resource.getParent().getFile(new Path(htmlName));
+				if (htmlFile.exists()) {
+					htmlFile.delete(true, null);
+				}
+			} else {
+				processResource(resource);
+			}
+		} else if (name.endsWith(".html")) {
+			String minimarkName = name.replace(".html", ".minimark");
+			IFile minimarkFile = resource.getParent().getFile(new Path(minimarkName));
+			if (minimarkFile.exists()) {
+				processResource(minimarkFile);
+			}
 		}
 		return true;
 	}
@@ -46,7 +62,7 @@ public class MinimarkVisitor implements IResourceProxyVisitor, IResourceDeltaVis
 	}
 
 	private void processResource(IResource resource) throws CoreException {
-		if (resource instanceof IFile) {
+		if (resource instanceof IFile && resource.exists()) {
 			try {
 				IFile file = (IFile) resource;
 				InputStream in = file.getContents();
