@@ -5,7 +5,15 @@
       <children xsi:type="advanced:Perspective" xmi:id="_6wlLkcgZEeSyMNYR5xypkQ" elementId="com.packtpub.e4.application.perspective.sample">
         <children xsi:type="basic:PartSashContainer" xmi:id="_6wlLksgZEeSyMNYR5xypkQ" elementId="com.packtpub.e4.application.partsashcontainer.sample">
           <children xsi:type="basic:PartStack" xmi:id="_6wlLk8gZEeSyMNYR5xypkQ" elementId="com.packtpub.e4.application.partstack.sample">
-            <children xsi:type="basic:Part" xmi:id="_5xSVUCtREeaEgO2wgHscJg" elementId="com.packtpub.e4.application.part.hello" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.Hello" label="Hello" closeable="true"/>
+            <children xsi:type="basic:Part" xmi:id="_5xSVUCtREeaEgO2wgHscJg" elementId="com.packtpub.e4.application.part.hello" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.Hello" label="Hello" closeable="true">
+              <menus xsi:type="menu:PopupMenu" xmi:id="_qXR9ECtfEeaEgO2wgHscJg" elementId="com.packtpub.e4.application.popupmenu.hello">
+                <children xsi:type="menu:HandledMenuItem" xmi:id="_0Pbt8CtfEeaEgO2wgHscJg" elementId="com.packtpub.e4.application.handledmenuitem.hello" label="Hello" command="_aU2YECtbEeaEgO2wgHscJg"/>
+              </menus>
+              <menus xmi:id="_MYJaYCtgEeaEgO2wgHscJg" elementId="com.packtpub.e4.application.menu.0">
+                <tags>ViewMenu</tags>
+                <children xsi:type="menu:HandledMenuItem" xmi:id="_OD_RICtgEeaEgO2wgHscJg" elementId="com.packtpub.e4.application.handledmenuitem.hello" label="Hello" command="_aU2YECtbEeaEgO2wgHscJg"/>
+              </menus>
+            </children>
             <children xsi:type="basic:Part" xmi:id="_lSy7ECtVEeaEgO2wgHscJg" elementId="com.packtpub.e4.application.part.rainbow" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.Rainbow" label="Rainbow"/>
           </children>
         </children>

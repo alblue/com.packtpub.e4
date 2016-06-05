@@ -22,6 +22,7 @@ import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -45,7 +46,10 @@ public class Hello {
 	private UISynchronize ui;
 
 	@PostConstruct
-	public void create(Composite parent) {
+	public void create(Composite parent, EMenuService menu) {
+		if (!menu.registerContextMenu(parent, "com.packtpub.e4.application.popupmenu.hello")) {
+			logService.log(LogService.LOG_ERROR, "Failed to register pop-up menu");
+		}
 		button = new Button(parent, SWT.PUSH);
 		button.setText("Do not push");
 		button.addSelectionListener(new SelectionListener() {
