@@ -10,18 +10,24 @@
 package com.packtpub.e4.application.parts;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.osgi.service.log.LogService;
 
 public class Hello {
 	private Label label;
+	@Inject
+	private LogService logService;
 
 	@PostConstruct
 	public void create(Composite parent) {
 		label = new Label(parent, SWT.NONE);
 		label.setText("Hello");
+		logService.log(LogService.LOG_ERROR, "Hello");
 	}
 
 	@Focus
