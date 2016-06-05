@@ -7,13 +7,13 @@
             id="com.packtpub.e4.migration"
             name="Sample Category">
       </category>
-      <view
+      <e4view
             category="com.packtpub.e4.migration"
             class="com.packtpub.e4.migration.views.SampleView"
             icon="icons/sample.gif"
             id="com.packtpub.e4.migration.views.SampleView"
             name="Sample View">
-      </view>
+      </e4view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
