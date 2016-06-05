@@ -19,11 +19,15 @@ import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
+import com.packtpub.e4.application.StringService;
+
 public class Rainbow {
 	private static final Object[] rainbow = { "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" };
 	@Inject
 	// private ESelectionService selectionService;
 	private IEventBroker broker;
+	@Inject
+	private StringService stringService;
 
 	@PostConstruct
 	public void create(Composite parent) {
@@ -32,7 +36,7 @@ public class Rainbow {
 		lv.addSelectionChangedListener(event -> {
 			IStructuredSelection sel = (IStructuredSelection) event.getSelection();
 			Object colour = sel.getFirstElement();
-			broker.post("rainbow/colour", colour);
+			broker.post("rainbow/colour", stringService.process(colour.toString()));
 		});
 		lv.setInput(rainbow);
 	}
