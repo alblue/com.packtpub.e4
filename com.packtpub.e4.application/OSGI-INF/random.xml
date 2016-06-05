@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0"
+ name="math.random">
+  <implementation class="com.packtpub.e4.application.RandomFunction"/>
+  <service>
+    <provide
+      interface="org.eclipse.e4.core.contexts.IContextFunction"/>
+  </service>
+ <property name="service.context.key" type="String"
+  value="math.random"/>
+</scr:component>
