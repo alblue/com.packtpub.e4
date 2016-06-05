@@ -5,7 +5,7 @@
       <children xsi:type="advanced:Perspective" xmi:id="_6wlLkcgZEeSyMNYR5xypkQ" elementId="com.packtpub.e4.application.perspective.sample">
         <children xsi:type="basic:PartSashContainer" xmi:id="_6wlLksgZEeSyMNYR5xypkQ" elementId="com.packtpub.e4.application.partsashcontainer.sample">
           <children xsi:type="basic:PartStack" xmi:id="_6wlLk8gZEeSyMNYR5xypkQ" elementId="com.packtpub.e4.application.partstack.sample">
-            <children xsi:type="basic:Part" xmi:id="_6wlLlMgZEeSyMNYR5xypkQ" elementId="com.packtpub.e4.application.part.sample" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.SamplePart" label="Sample Part"/>
+            <children xsi:type="basic:Part" xmi:id="_5xSVUCtREeaEgO2wgHscJg" elementId="com.packtpub.e4.application.part.hello" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.Hello" label="Hello" closeable="true"/>
           </children>
         </children>
       </children>
