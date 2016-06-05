@@ -12,8 +12,9 @@ package com.packtpub.e4.application.parts;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -21,13 +22,18 @@ import org.eclipse.swt.widgets.Composite;
 public class Rainbow {
 	private static final Object[] rainbow = { "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" };
 	@Inject
-	private ESelectionService selectionService;
+	// private ESelectionService selectionService;
+	private IEventBroker broker;
 
 	@PostConstruct
 	public void create(Composite parent) {
 		ListViewer lv = new ListViewer(parent, SWT.NONE);
 		lv.setContentProvider(new ArrayContentProvider());
-		lv.addSelectionChangedListener(event -> selectionService.setSelection(event.getSelection()));
+		lv.addSelectionChangedListener(event -> {
+			IStructuredSelection sel = (IStructuredSelection) event.getSelection();
+			Object colour = sel.getFirstElement();
+			broker.post("rainbow/colour", colour);
+		});
 		lv.setInput(rainbow);
 	}
 }
