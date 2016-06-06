@@ -3,7 +3,8 @@
       id="com.packtpub.e4.feature"
       label="Feature"
       version="1.0.0.qualifier"
-      provider-name="PACKTPUB">
+      provider-name="PACKTPUB"
+      plugin="com.packtpub.e4.clock.ui">
 
    <description url="https://github.com/alblue/com.packtpub.e4/blob/master/README.md">
 This feature contains source code for the Packt Publishing book "Eclipse Plugin Development by Example: Beginners Guide"</description>
