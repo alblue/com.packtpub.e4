@@ -9,14 +9,26 @@
             name="com.packtpub.e4.application"
             application="org.eclipse.e4.ui.workbench.swt.E4Application">
          <property
+               name="cssTheme"
+               value="com.packtpub.e4.ui.css.theme.blue"/>
+         <!-- replaced by cssTheme
+         <property
                name="applicationCSS"
                value="platform:/plugin/com.packtpub.e4.application/css/default.css">
          </property>
+         -->
          <property
                name="appName"
                value="com.packtpub.e4.application">
          </property>
       </product>
    </extension>
-
+   <extension point="org.eclipse.e4.ui.css.swt.theme">
+      <theme label="Blue Theme"
+            id="com.packtpub.e4.ui.css.theme.blue"
+            basestylesheeturi="css/blue.css"/>
+      <theme label="Green Theme"
+            id="com.packtpub.e4.ui.css.theme.green"
+            basestylesheeturi="css/green.css"/>
+   </extension>
 </plugin>

@@ -18,7 +18,8 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.core.runtime;bundle-version="0.0.0",
  org.eclipse.osgi.services,
  org.eclipse.e4.core.services,
- org.eclipse.e4.core.di.extensions
+ org.eclipse.e4.core.di.extensions,
+ org.eclipse.e4.ui.css.swt.theme
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: com.packtpub.e4.clock.ui
