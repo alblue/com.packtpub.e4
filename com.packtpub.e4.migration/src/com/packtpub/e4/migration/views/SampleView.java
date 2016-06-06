@@ -82,7 +82,9 @@ public class SampleView {
 		hookDoubleClickAction();
 		// createToolBar(); // now in fragment.e4xmi
 		// createViewMenu(); // now in fragment.e4xmi
-		createPopupMenu(viewer.getControl());
+		// createPopupMenu(viewer.getControl()); // now in fragment.e4xmi
+		menuService.registerContextMenu(viewer.getControl(), part.getElementId() + ".popup");
+
 	}
 
 	private void hookDoubleClickAction() {
