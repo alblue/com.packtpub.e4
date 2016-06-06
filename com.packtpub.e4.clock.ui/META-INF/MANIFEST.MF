@@ -19,3 +19,4 @@ Import-Package: org.eclipse.e4.core.di.annotations,
  org.eclipse.e4.ui.services,
  org.eclipse.e4.ui.workbench.modeling,
  javax.inject;version="1.0.0"
+Export-Package: com.packtpub.e4.clock.ui
