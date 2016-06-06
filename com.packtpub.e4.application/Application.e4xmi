@@ -16,6 +16,7 @@
             </children>
             <children xsi:type="basic:Part" xmi:id="_lSy7ECtVEeaEgO2wgHscJg" elementId="com.packtpub.e4.application.part.rainbow" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.Rainbow" label="Rainbow"/>
             <children xsi:type="basic:Part" xmi:id="_DtH1QCuzEear4J9uG4izPA" elementId="com.packtpub.e4.application.part.clock" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.ClockPart" label="Clock"/>
+            <children xsi:type="basic:Part" xmi:id="_waqPoCu-Eear4J9uG4izPA" elementId="com.packtpub.e4.application.part.theme" contributionURI="bundleclass://com.packtpub.e4.application/com.packtpub.e4.application.parts.ThemePart" label="Themes"/>
           </children>
         </children>
       </children>
