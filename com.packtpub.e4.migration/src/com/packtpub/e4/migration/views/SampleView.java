@@ -16,7 +16,10 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.menu.MDirectMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MDirectToolItem;
+import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
+import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuFactory;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
@@ -74,6 +77,7 @@ public class SampleView {
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "com.packtpub.e4.migration.viewer");
 		hookDoubleClickAction();
 		createToolBar();
+		createViewMenu();
 	}
 
 	private void hookDoubleClickAction() {
@@ -116,5 +120,25 @@ public class SampleView {
 		} else {
 			return null;
 		}
+	}
+
+	private void createViewMenu() {
+		MMenu menu = MMenuFactory.INSTANCE.createMenu();
+		part.getMenus().add(menu);
+		menu.getTags().add("ViewMenu");
+		List<MMenuElement> children = menu.getChildren();
+		MDirectMenuItem one = MMenuFactory.INSTANCE.createDirectMenuItem();
+		one.setLabel("Action 1");
+		one.setTooltip("Action 1 tooltip");
+		one.setIconURI("platform:/plugin/org.eclipse.ui/icons/full/obj16/info_tsk.png");
+		one.setContributionURI(getURI(HandlerOne.class));
+		MDirectMenuItem two = MMenuFactory.INSTANCE.createDirectMenuItem();
+		two.setLabel("Action 2");
+		two.setTooltip("Action 2 tooltip");
+		two.setIconURI("platform:/plugin/org.eclipse.ui/icons/full/obj16/info_tsk.png");
+		two.setContributionURI(getURI(HandlerTwo.class));
+		children.add(one);
+		children.add(MMenuFactory.INSTANCE.createMenuSeparator());
+		children.add(two);
 	}
 }
