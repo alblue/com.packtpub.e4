@@ -68,4 +68,23 @@
       <keyword id="com.packtpub.e4.clock.ui.keywords"
         label="offset timezone"/>
   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.core.propertyHandler">
+      <handler
+            adapter="com.packtpub.e4.clock.ui.internal.css.ClockElement"
+            handler="com.packtpub.e4.clock.ui.internal.css.CSSPropertyClockHandler">
+         <property-name
+               name="clock-hand-color">
+         </property-name>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.core.elementProvider">
+      <provider
+            class="com.packtpub.e4.clock.ui.internal.css.ClockElementProvider">
+         <widget
+               class="com.packtpub.e4.clock.ui.ClockWidget">
+         </widget>
+      </provider>
+   </extension>
 </plugin>

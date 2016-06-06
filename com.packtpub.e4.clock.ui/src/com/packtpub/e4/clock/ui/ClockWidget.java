@@ -48,7 +48,11 @@ public class ClockWidget extends Canvas {
 		ZonedDateTime now = ZonedDateTime.now(zone);
 		int seconds = now.getSecond();
 		int arc = (15 - seconds) * 6 % 360;
-		e.gc.setBackground(color);
+		if (handColor == null) {
+			e.gc.setBackground(color);
+		} else {
+			e.gc.setBackground(handColor);
+		}
 		e.gc.fillArc(e.x, e.y, e.width - 1, e.height - 1, arc - 1, 2);
 		e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
 		int hours = now.getHour();
@@ -82,4 +86,18 @@ public class ClockWidget extends Canvas {
 	// color.dispose();
 	// super.dispose();
 	// }
+
+	private Color handColor;
+
+	public Color getHandColor() {
+		if (handColor == null) {
+			return color;
+		} else {
+			return handColor;
+		}
+	}
+
+	public void setHandColor(Color color) {
+		handColor = color;
+	}
 }

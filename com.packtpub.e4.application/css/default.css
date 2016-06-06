@@ -24,3 +24,8 @@ Shell {
   color: red;
   background-color: yellow;
 }
+
+ClockWidget {
+  background-color: white;
+  clock-hand-color: blue;
+}
