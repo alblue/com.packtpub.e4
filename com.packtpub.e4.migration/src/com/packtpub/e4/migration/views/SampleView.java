@@ -33,6 +33,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 public class SampleView {
 
@@ -95,15 +97,24 @@ public class SampleView {
 		MDirectToolItem one = MMenuFactory.INSTANCE.createDirectToolItem();
 		one.setTooltip("Action 1 tooltip");
 		one.setIconURI("platform:/plugin/org.eclipse.ui/icons/full/obj16/info_tsk.png");
-		one.setContributionURI("bundleclass://com.packtpub.e4.migration/com.packtpub.e4.migration.views.HandlerOne");
+		one.setContributionURI(getURI(HandlerOne.class));
 		MDirectToolItem two = MMenuFactory.INSTANCE.createDirectToolItem();
 		two.setTooltip("Action 2 tooltip");
 		two.setIconURI("platform:/plugin/org.eclipse.ui/icons/full/obj16/info_tsk.png");
-		two.setContributionURI("bundleclass://com.packtpub.e4.migration/com.packtpub.e4.migration.views.HandlerTwo");
+		two.setContributionURI(getURI(HandlerTwo.class));
 		MToolBar toolBar = MMenuFactory.INSTANCE.createToolBar();
 		List<MToolBarElement> children = toolBar.getChildren();
 		children.add(one);
 		children.add(two);
 		part.setToolbar(toolBar);
+	}
+
+	private String getURI(Class<?> clazz) {
+		Bundle bundle = FrameworkUtil.getBundle(clazz);
+		if (bundle != null) {
+			return "bundleclass://" + bundle.getSymbolicName() + "/" + clazz.getName();
+		} else {
+			return null;
+		}
 	}
 }
