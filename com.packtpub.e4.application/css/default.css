@@ -1,3 +1,6 @@
+/* Go over to the dark side */
+@import url("platform:/plugin/org.eclipse.ui.themes/css/e4-dark.css");
+
 /* Used to style all windows (shells) */
 Shell {
 /*
