@@ -81,7 +81,7 @@ public class SampleView {
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "com.packtpub.e4.migration.viewer");
 		hookDoubleClickAction();
 		// createToolBar(); // now in fragment.e4xmi
-		createViewMenu();
+		// createViewMenu(); // now in fragment.e4xmi
 		createPopupMenu(viewer.getControl());
 	}
 
