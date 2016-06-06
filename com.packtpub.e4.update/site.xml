@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.packtpub.e4.feature_1.0.0.qualifier.jar" id="com.packtpub.e4.feature" version="1.0.0.qualifier">
+      <category name="com.packtpub.e4.category"/>
+   </feature>
+   <category-def name="com.packtpub.e4.category" label="PacktPub Example E4 Category">
+      <description>
+         Contains features for the PacktPub E4 book by Alex Blewitt
+      </description>
+   </category-def>
+</site>
