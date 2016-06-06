@@ -52,6 +52,8 @@
       <plugin id="org.eclipse.e4.core.di.extensions"/>
       <plugin id="org.eclipse.e4.core.services"/>
       <plugin id="org.eclipse.e4.emf.xpath"/>
+      <plugin id="org.eclipse.e4.tools.css.spy"/>
+      <plugin id="org.eclipse.e4.tools.spy"/>
       <plugin id="org.eclipse.e4.ui.bindings"/>
       <plugin id="org.eclipse.e4.ui.css.core"/>
       <plugin id="org.eclipse.e4.ui.css.swt"/>
