@@ -72,6 +72,9 @@ public class Hello {
 		label = new Label(parent, SWT.NONE);
 		label.setText(window.getLabel() + " " + random);
 		logService.log(LogService.LOG_ERROR, "Hello");
+		Label label = new Label(parent, SWT.NONE);
+		label.setText("Danger Will Robinson!");
+		label.setData("org.eclipse.e4.ui.css.id", "DireWarningMessage");
 	}
 
 	@Focus
