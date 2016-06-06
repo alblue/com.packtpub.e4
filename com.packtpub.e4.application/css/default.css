@@ -1,0 +1,21 @@
+/* Used to style all windows (shells) */
+Shell {
+/*
+ * background-color: red orange yellow green blue indigo violet
+ *                    15%    30%    45%   60%  75%    90%;
+ */
+}
+
+/* Used to style all parts */
+.MPart {
+/*
+ * background-color: red orange yellow green blue indigo violet
+ *                    15%    30%    45%   60%  75%    90%;
+ */
+}
+
+/* Used to style a particular part, by id, with . changed to - */
+#com-packtpub-e4-application-part-hello {
+  background-color: red orange yellow green blue indigo violet
+                      15%    30%    45%   60%  75%    90%;
+}
