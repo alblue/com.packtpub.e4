@@ -80,7 +80,7 @@ public class SampleView {
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "com.packtpub.e4.migration.viewer");
 		hookDoubleClickAction();
-		createToolBar();
+		// createToolBar(); // now in fragment.e4xmi
 		createViewMenu();
 		createPopupMenu(viewer.getControl());
 	}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_n5zrsCt4Eear4J9uG4izPA">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_pzApACt4Eear4J9uG4izPA" featurename="descriptors" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_vMJQ4Ct4Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.views.SampleView" label="Sample View" iconURI="platform:/plugin/com.packtpub.e4.migration/icons/sample.gif" category="Sample Category" closeable="true" contributionURI="bundleclass://com.packtpub.e4.migration/com.packtpub.e4.migration.views.SampleView">
+      <toolbar xmi:id="_0WRzcCt4Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.toolbar.0">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_uUrA4Ct5Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.handledtoolitem.action1" label="Action 1" iconURI="platform:/plugin/org.eclipse.ui/icons/full/obj16/info_tsk.png" tooltip="Action 1 tooltip" command="_QfruICt5Eear4J9uG4izPA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_KwuKwCt6Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.handledtoolitem.action2" label="Action 2" iconURI="platform:/plugin/org.eclipse.ui/icons/full/obj16/info_tsk.png" tooltip="Action 2 tooltip" command="_TruzYCt5Eear4J9uG4izPA"/>
+      </toolbar>
+      <variables>View</variables>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_NtlZ8Ct5Eear4J9uG4izPA" featurename="commands" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="commands:Command" xmi:id="_QfruICt5Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.command.one" commandName="Action 1"/>
+    <elements xsi:type="commands:Command" xmi:id="_TruzYCt5Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.command.two" commandName="Action 2"/>
+    <elements xsi:type="commands:Command" xmi:id="_VQOE8Ct5Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.command.double" commandName="Double Click"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_bAidwCt5Eear4J9uG4izPA" featurename="handlers" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="commands:Handler" xmi:id="_e4wsgCt5Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.handler.one" contributionURI="bundleclass://com.packtpub.e4.migration/com.packtpub.e4.migration.views.HandlerOne" command="_QfruICt5Eear4J9uG4izPA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_g7q_cCt5Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.handler.two" contributionURI="bundleclass://com.packtpub.e4.migration/com.packtpub.e4.migration.views.HandlerTwo" command="_TruzYCt5Eear4J9uG4izPA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_jhsmgCt5Eear4J9uG4izPA" elementId="com.packtpub.e4.migration.handler.double" contributionURI="bundleclass://com.packtpub.e4.migration/com.packtpub.e4.migration.views.DoubleClick" command="_VQOE8Ct5Eear4J9uG4izPA"/>
+  </fragments>
+</fragment:ModelFragments>
