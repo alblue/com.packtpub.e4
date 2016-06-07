@@ -15,14 +15,26 @@ import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class UITest {
+	private static SWTWorkbenchBot bot;
+
+	@BeforeClass
+	public static void beforeClass() {
+		bot = new SWTWorkbenchBot();
+		try {
+			bot.viewByTitle("Welcome").close();
+		} catch (WidgetNotFoundException e) {
+			// ignore
+		}
+	}
+
 	@Test
 	public void testUI() {
-		SWTWorkbenchBot bot = new SWTWorkbenchBot();
 		SWTBotShell[] shells = bot.shells();
 		boolean found = false;
 		for (int i = 0; i < shells.length && !found; i++) {
@@ -37,12 +49,6 @@ public class UITest {
 
 	@Test
 	public void createProject() {
-		SWTWorkbenchBot bot = new SWTWorkbenchBot();
-		try {
-			bot.viewByTitle("Welcome").close();
-		} catch (WidgetNotFoundException e) {
-			// ignore
-		}
 		bot.menu("File").menu("Project...").click();
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
