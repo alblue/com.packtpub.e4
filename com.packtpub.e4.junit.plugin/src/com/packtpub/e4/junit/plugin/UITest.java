@@ -33,4 +33,16 @@ public class UITest {
 		}
 		assertTrue(found);
 	}
+
+	@Test
+	public void createProject() {
+		SWTWorkbenchBot bot = new SWTWorkbenchBot();
+		bot.menu("File").menu("Project...").click();
+		SWTBotShell shell = bot.shell("New Project");
+		shell.activate();
+		bot.tree().expandNode("General").select("Project");
+		bot.button("Next >").click();
+		bot.textWithLabel("Project name:").setText("SWTBot Test Project");
+		bot.button("Finish").click();
+	}
 }
