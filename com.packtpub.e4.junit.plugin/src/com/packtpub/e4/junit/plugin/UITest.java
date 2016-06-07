@@ -87,12 +87,7 @@ public class UITest {
 		Set<String> regions = ZoneId.getAvailableZoneIds().stream().filter(s -> s.contains("/"))
 				.map(s -> s.split("/")[0]).collect(Collectors.toSet());
 		assertEquals(regions.size(), ctabs.size());
-		String tabText = UIThreadRunnable.syncExec(new StringResult() {
-			@Override
-			public String run() {
-				return ctabs.get(0).getText();
-			}
-		});
+		String tabText = UIThreadRunnable.syncExec(() -> ctabs.get(0).getText());
 		assertEquals("Africa", tabText);
 	}
 }
