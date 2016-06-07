@@ -9,14 +9,24 @@
  */
 package com.packtpub.e4.junit.plugin;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.time.ZoneId;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.hamcrest.Matcher;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,5 +79,11 @@ public class UITest {
 		bot.button("OK").click();
 		SWTBotView timeZoneView = bot.viewByTitle("Time Zone View");
 		assertNotNull(timeZoneView);
+		Widget widget = timeZoneView.getWidget();
+		Matcher<CTabItem> matcher = WidgetMatcherFactory.widgetOfType(CTabItem.class);
+		List<? extends CTabItem> ctabs = bot.widgets(matcher, widget);
+		Set<String> regions = ZoneId.getAvailableZoneIds().stream().filter(s -> s.contains("/"))
+				.map(s -> s.split("/")[0]).collect(Collectors.toSet());
+		assertEquals(regions.size(), ctabs.size());
 	}
 }
