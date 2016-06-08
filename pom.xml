@@ -15,6 +15,8 @@
     <module>com.packtpub.e4.clock.ui</module>
     <module>com.packtpub.e4.feature</module>
     <module>com.packtpub.e4.update</module>
+    <module>com.packtpub.e4.application</module>
+    <module>com.packtpub.e4.product</module>
   </modules>
   <build>
     <plugins>
@@ -23,6 +25,30 @@
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho.version}</version>
         <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <environments>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch> <!--arch>x86</arch-->
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch> <!--arch>x86</arch-->
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+          </environments>
+        </configuration>
       </plugin>
     </plugins>
   </build>
