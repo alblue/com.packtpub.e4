@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Eclipse Mars" sequenceNumber="5">
+<?pde version="3.8"?><target name="Eclipse Mars" sequenceNumber="7">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.e4.rcp.feature.group" version="1.4.1.v20160212-1350"/>
@@ -8,6 +8,8 @@
 <unit id="org.eclipse.swtbot.feature.group" version="2.3.0.201506081302"/>
 <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.3.0.201506081302"/>
 <unit id="org.eclipse.swtbot.ide.feature.group" version="2.3.0.201506081302"/>
+<unit id="org.eclipse.egit.feature.group" version="4.1.1.201511131810-r"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.11.2.v20160202-2102"/>
 <repository location="http://download.eclipse.org/releases/mars/"/>
 </location>
 </locations>

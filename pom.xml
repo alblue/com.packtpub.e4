@@ -17,6 +17,7 @@
     <module>com.packtpub.e4.update</module>
     <module>com.packtpub.e4.application</module>
     <module>com.packtpub.e4.product</module>
+    <module>com.packtpub.e4.target.mars</module>
   </modules>
   <build>
     <plugins>
@@ -31,6 +32,13 @@
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho.version}</version>
         <configuration>
+          <target>
+            <artifact>
+              <groupId>com.packtpub.e4</groupId>
+              <artifactId>com.packtpub.e4.target.mars</artifactId>
+              <version>${project.version}</version>
+            </artifact>
+          </target>
           <environments>
             <environment>
               <os>win32</os>
@@ -52,6 +60,7 @@
       </plugin>
     </plugins>
   </build>
+<!--
   <repositories>
     <repository>
       <id>eclipse</id>
@@ -59,4 +68,5 @@
       <url>${eclipse}</url>
     </repository>
   </repositories>
+-->
 </project>
