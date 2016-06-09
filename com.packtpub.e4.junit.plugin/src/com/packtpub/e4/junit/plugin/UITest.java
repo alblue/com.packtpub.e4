@@ -60,7 +60,8 @@ public class UITest {
 		boolean found = false;
 		for (int i = 0; i < shells.length && !found; i++) {
 			if (shells[i].isVisible()) {
-				if (shells[i].getText().contains("Eclipse")) {
+				String text = shells[i].getText();
+				if (text.contains("Eclipse") || text.contains("Resource") || text.contains("Java")) {
 					found = true;
 				}
 			}

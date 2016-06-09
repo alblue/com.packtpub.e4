@@ -10,6 +10,7 @@
 <unit id="org.eclipse.swtbot.ide.feature.group" version="2.3.0.201506081302"/>
 <unit id="org.eclipse.egit.feature.group" version="4.1.1.201511131810-r"/>
 <unit id="org.eclipse.equinox.sdk.feature.group" version="3.11.2.v20160202-2102"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.11.2.v20160212-1500"/>
 <repository location="http://download.eclipse.org/releases/mars/"/>
 </location>
 </locations>
