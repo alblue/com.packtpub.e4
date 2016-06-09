@@ -70,4 +70,38 @@
     </repository>
   </repositories>
 -->
+  <profiles>
+    <profile>
+      <id>sign</id>
+      <activation>
+        <property>
+          <name>jarsigner.alias</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jarsigner-plugin</artifactId>
+            <version>1.4</version>
+            <executions>
+              <execution>
+                <id>sign</id>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <verbose>true</verbose>
+              <!-- alias>packtpub</alias -->
+              <keystore>${project.parent.basedir}/keystore</keystore>
+              <!-- storepass>...</storepass -->
+              <!-- keypass>...</keypass -->
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
