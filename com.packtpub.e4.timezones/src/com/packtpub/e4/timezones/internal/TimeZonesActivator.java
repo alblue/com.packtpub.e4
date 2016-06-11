@@ -9,6 +9,9 @@
  */
 package com.packtpub.e4.timezones.internal;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -16,9 +19,15 @@ import com.packtpub.e4.timezones.TimeZonesService;
 
 public class TimeZonesActivator implements BundleActivator {
 	public void start(BundleContext context) throws Exception {
-		context.registerService(TimeZonesService.class, new TimeZonesProvider(), null);
+		context.registerService(TimeZonesService.class, new TimeZonesProvider(), priority(1));
 	}
 
 	public void stop(BundleContext context) throws Exception {
+	}
+
+	private Dictionary<String, Object> priority(int priority) {
+		Hashtable<String, Object> dict = new Hashtable<>();
+		dict.put("service.ranking", Integer.valueOf(priority));
+		return dict;
 	}
 }
