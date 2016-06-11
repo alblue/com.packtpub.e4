@@ -12,12 +12,13 @@ package com.packtpub.e4.timezones.internal;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+import com.packtpub.e4.timezones.TimeZonesService;
+
 public class TimeZonesActivator implements BundleActivator {
 	public void start(BundleContext context) throws Exception {
-		System.out.println("Bundle started");
+		context.registerService(TimeZonesService.class, new TimeZonesProvider(), null);
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Bundle stopped");
 	}
 }
