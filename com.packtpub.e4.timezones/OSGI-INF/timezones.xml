@@ -5,4 +5,5 @@
 	<service>
 		<provide interface="com.packtpub.e4.timezones.TimeZonesService" />
 	</service>
+	<property name="service.ranking" type="Integer" value="2" />
 </scr:component>
