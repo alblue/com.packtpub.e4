@@ -6,5 +6,6 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: PACKTPUB
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.osgi.framework
-Bundle-Activator: com.packtpub.e4.timezones.internal.TimeZonesActivator
 Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/*.xml
+Doesnt-Work-Require-Capability: osgi.extender;osgi.extender="osgi.component"
