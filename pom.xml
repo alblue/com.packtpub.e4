@@ -19,6 +19,7 @@
     <module>com.packtpub.e4.product</module>
     <module>com.packtpub.e4.target.mars</module>
     <module>com.packtpub.e4.junit.plugin</module>
+    <module>com.packtpub.e4.timezones</module>
   </modules>
   <build>
     <plugins>
