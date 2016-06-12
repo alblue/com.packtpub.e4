@@ -6,4 +6,6 @@
 		<provide interface="com.packtpub.e4.timezones.TimeZonesService" />
 	</service>
 	<property name="service.ranking" type="Integer" value="2" />
+	<reference interface="org.osgi.service.log.LogService"
+		cardinality="0..1" name="log" bind="setLog" unbind="unsetLog" />
 </scr:component>

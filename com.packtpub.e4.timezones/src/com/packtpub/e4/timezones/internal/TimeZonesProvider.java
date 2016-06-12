@@ -17,16 +17,32 @@ import java.util.TreeSet;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import org.osgi.service.log.LogService;
+
 import com.packtpub.e4.timezones.TimeZonesService;
 
 public class TimeZonesProvider implements TimeZonesService {
 	public Map<String, Set<ZoneId>> getTimeZones() {
 		Supplier<Set<ZoneId>> sortedZones = () -> new TreeSet<>(new TimeZoneComparator());
-		return ZoneId.getAvailableZoneIds().stream() // stream
+		Map<String, Set<ZoneId>> timeZones = ZoneId.getAvailableZoneIds().stream() // stream
 				.filter(s -> s.contains("/")) // with / in them
 				.map(ZoneId::of) // convert to ZoneId
 				.collect(Collectors.groupingBy( // and group by
 						z -> z.getId().split("/")[0], // first part
 						TreeMap::new, Collectors.toCollection(sortedZones)));
+		if (logService != null) {
+			logService.log(LogService.LOG_INFO, "Time zones loaded with " + timeZones.size());
+		}
+		return timeZones;
+	}
+
+	private LogService logService;
+
+	public void setLog(LogService logService) {
+		this.logService = logService;
+	}
+
+	public void unsetLog(LogService logService) {
+		this.logService = null;
 	}
 }
