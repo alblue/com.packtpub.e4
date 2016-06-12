@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0"
+	name="EchoServiceFactory">
+	<implementation class="com.packtpub.e4.timezones.internal.EchoServiceFactory" />
+	<service>
+		<provide interface="org.osgi.service.cm.ManagedServiceFactory" />
+	</service>
+	<property name="service.pid" type="String"
+		value="com.packtpub.e4.timezones.internal.EchoServiceFactory" />
+</scr:component>
