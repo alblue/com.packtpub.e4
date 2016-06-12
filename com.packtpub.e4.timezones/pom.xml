@@ -34,8 +34,10 @@
         </executions>
         <configuration>
           <supportedProjectTypes>eclipse-plugin</supportedProjectTypes>
+          <outputDirectory>${basedir}</outputDirectory>
         </configuration>
       </plugin>
     </plugins>
+    <sourceDirectory>src</sourceDirectory>
   </build>
 </project>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0" name="TimeZonesProvider2">
+    <implementation class="com.packtpub.e4.timezones.internal.TimeZonesProvider"/>
+    <service servicefactory="false">
+        <provide interface="com.packtpub.e4.timezones.TimeZonesService"/>
+    </service>
+    <property name="service.ranking" type="Integer" value="1"/>
+</scr:component>

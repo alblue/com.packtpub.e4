@@ -22,7 +22,7 @@ import org.osgi.service.log.LogService;
 
 import com.packtpub.e4.timezones.TimeZonesService;
 
-@Component(name = "TimeZonesProvider", service = { TimeZonesService.class }, property = { "service.ranking:Integer=1" })
+@Component(name = "TimeZonesProvider2", service = { TimeZonesService.class }, property = { "service.ranking:Integer=1" })
 public class TimeZonesProvider implements TimeZonesService {
 	public Map<String, Set<ZoneId>> getTimeZones() {
 		Supplier<Set<ZoneId>> sortedZones = () -> new TreeSet<>(new TimeZoneComparator());
