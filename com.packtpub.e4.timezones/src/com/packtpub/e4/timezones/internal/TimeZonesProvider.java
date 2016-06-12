@@ -17,10 +17,12 @@ import java.util.TreeSet;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import org.osgi.service.component.annotations.Component;
 import org.osgi.service.log.LogService;
 
 import com.packtpub.e4.timezones.TimeZonesService;
 
+@Component(name = "TimeZonesProvider", service = { TimeZonesService.class }, property = { "service.ranking:Integer=1" })
 public class TimeZonesProvider implements TimeZonesService {
 	public Map<String, Set<ZoneId>> getTimeZones() {
 		Supplier<Set<ZoneId>> sortedZones = () -> new TreeSet<>(new TimeZoneComparator());
