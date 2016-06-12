@@ -18,14 +18,18 @@ import org.osgi.util.tracker.ServiceTracker;
 
 public class TimeZonesFactory {
 	private static final Bundle bundle = FrameworkUtil.getBundle(TimeZonesService.class);
-	private static final BundleContext context = bundle.getBundleContext();
-	private static final ServiceTracker<TimeZonesService, TimeZonesService> tracker = new ServiceTracker<>(context,
-			TimeZonesService.class, null);
+	private static final BundleContext context = bundle == null ? null : bundle.getBundleContext();
+	private static final ServiceTracker<TimeZonesService, TimeZonesService> tracker = context == null ? null
+			: new ServiceTracker<>(context, TimeZonesService.class, null);
 	static {
-		tracker.open(); // Remember to call this!
+		if (tracker != null) {
+			tracker.open(); // Remember to call this!
+		}
 	}
 
 	public static void use(Consumer<TimeZonesService> consumer) {
-		consumer.accept(tracker.getService());
+		if (tracker != null) {
+			consumer.accept(tracker.getService());
+		}
 	}
 }
