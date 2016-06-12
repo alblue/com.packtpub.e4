@@ -14,19 +14,18 @@ import java.util.function.Consumer;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
+import org.osgi.util.tracker.ServiceTracker;
 
 public class TimeZonesFactory {
 	private static final Bundle bundle = FrameworkUtil.getBundle(TimeZonesService.class);
 	private static final BundleContext context = bundle.getBundleContext();
-	private static final ServiceReference<TimeZonesService> sr = context.getServiceReference(TimeZonesService.class);
+	private static final ServiceTracker<TimeZonesService, TimeZonesService> tracker = new ServiceTracker<>(context,
+			TimeZonesService.class, null);
+	static {
+		tracker.open(); // Remember to call this!
+	}
 
 	public static void use(Consumer<TimeZonesService> consumer) {
-		TimeZonesService service = context.getService(sr);
-		try {
-			consumer.accept(service);
-		} finally {
-			context.ungetService(sr);
-		}
+		consumer.accept(tracker.getService());
 	}
 }
